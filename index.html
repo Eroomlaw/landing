@@ -3,1135 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>이룸 법률사무소 | 부산 개인회생·파산 전문</title>
-    <meta property="og:title" content="한번에 끝내주는 이룸 법률사무소">
-    <meta property="og:description" content="감당하기 힘든 채무, 국가가 지원하는 개인회생 제도로 다시 시작하세요. 1:1 비공개 안심 상담.">
+    <title>이룸법률사무소 | 부산회생법원 정문 앞 도산(개인회생·파산) 전담센터</title>
+    <meta property="og:title" content="부산회생법원 정문 앞 - 이룸법률사무소 개인회생·파산 전담센터">
+    <meta property="og:description" content="타 지역 공장형 사무실에 맡겨 기각당하지 마십시오. 부산회생법원 사정을 가장 잘 아는 장혜승 대표변호사가 직접 책임집니다.">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
+        #netlify-deploy-badge, .netlify-deploy-badge, a[href*="netlify.com/comply"] {
+            display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;
         }
-
+        :root {
+            --navy-950: #060b16;
+            --navy-900: #0b132b;
+            --navy-800: #131f42;
+            --navy-700: #1e2f5d;
+            --gold-500: #c5a059;
+            --gold-400: #d4af37;
+            --gold-300: #e6c875;
+            --gold-100: #fbf5e6;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --bg-ivory: #f8f7f4;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         html, body {
-            background-color: #e9ecef;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            color: #1a1a1a;
+            background-color: #1e2430;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+            color: var(--text-dark);
             overflow-x: hidden;
             width: 100%;
-            min-height: 100%;
             scroll-behavior: smooth;
         }
-
         .mobile-container {
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
-            position: relative;
+            background: var(--bg-ivory);
             min-height: 100vh;
-            box-shadow: 0 0 50px rgba(0,0,0,0.12);
-            padding-bottom: 140px; 
-            transition: background 0.6s ease-in-out;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.45);
+            padding-bottom: 96px;
+            position: relative;
         }
+        /* 최상단 실시간 상태 바 */
+        .top-status-bar {
+            background: var(--navy-950);
+            color: #cbd5e1;
+            font-size: 0.73rem;
+            padding: 7px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+        }
+        .live-dot-wrap { display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--gold-300); }
+        .live-dot {
+            width: 7px; height: 7px; background: #10b981; border-radius: 50%;
+            box-shadow: 0 0 8px #10b981; animation: blink 1.6s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-        .mobile-container.theme-empathy { background: linear-gradient(180deg, #f4f6f9 0%, #e8eef5 100%); }
-        .mobile-container.theme-default { background: linear-gradient(180deg, #f8f9fb 0%, #eef2f7 100%); }
-        .mobile-container.theme-danger { background: linear-gradient(180deg, #fbf4f4 0%, #f7eae5 100%); }
-        .mobile-container.theme-trust { background: linear-gradient(180deg, #edf3fc 0%, #dce8fc 100%); }
-        .mobile-container.theme-conclusion { background: linear-gradient(180deg, #fcf8ec 0%, #f7f0dc 100%); }
-
+        /* 스티키 프리미엄 헤더 */
         .brand-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 14px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky; top: 0; z-index: 90;
+            background: rgba(11, 19, 43, 0.96);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+        }
+        .brand-title-group { display: flex; flex-direction: column; }
+        .brand-sub-label { font-size: 0.68rem; color: var(--gold-400); font-weight: 700; letter-spacing: 0.5px; }
+        .brand-logo { font-size: 1.02rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .header-call-btn {
+            background: linear-gradient(135deg, var(--gold-400) 0%, #9e7a2f 100%);
+            color: var(--navy-950); font-size: 0.76rem; font-weight: 900;
+            padding: 8px 13px; border-radius: 99px; text-decoration: none;
+            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.35);
         }
 
-        .brand-logo {
-            font-size: 1rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
+        /* 1. 히어로 섹션 */
+        .hero-section {
+            background: radial-gradient(circle at 50% 0%, #1c2d5a 0%, var(--navy-900) 65%, var(--navy-950) 100%);
+            color: #ffffff; padding: 30px 20px 28px; position: relative; overflow: hidden;
+            border-bottom: 3px solid var(--gold-500);
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(197, 160, 89, 0.15);
+            border: 1px solid var(--gold-400);
+            color: var(--gold-300); font-size: 0.76rem; font-weight: 800;
+            padding: 6px 14px; border-radius: 99px; margin-bottom: 16px;
+        }
+        .hero-headline {
+            font-size: 1.56rem; font-weight: 900; line-height: 1.38;
+            letter-spacing: -0.7px; word-break: keep-all; margin-bottom: 14px;
+        }
+        .hero-headline .gold-text {
+            background: linear-gradient(90deg, #fde68a 0%, var(--gold-400) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-headline .warn-underline {
+            color: #fca5a5; text-decoration: underline; text-decoration-color: #ef4444; text-underline-offset: 5px;
+        }
+        .hero-lead {
+            font-size: 0.9rem; line-height: 1.62; color: #cbd5e1;
+            word-break: keep-all; margin-bottom: 22px;
         }
 
-        .brand-logo span { color: #0066cc; }
+        /* 대표변호사 프레스티지 쇼케이스 카드 */
+        .lawyer-showcase-card {
+            background: linear-gradient(180deg, #162447 0%, #0d162e 100%);
+            border-radius: 20px; overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.55);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+        }
+        .lawyer-img-frame {
+            background: radial-gradient(circle at 50% 40%, #263b73 0%, #0f1933 100%);
+            padding-top: 16px; text-align: center; line-height: 0; position: relative;
+        }
+        .lawyer-img-frame img {
+            width: 86%; max-width: 330px; height: auto; display: inline-block;
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.45));
+        }
+        .lawyer-credential-floating {
+            position: absolute; top: 14px; left: 14px; text-align: left;
+            background: rgba(6, 11, 22, 0.82); backdrop-filter: blur(8px);
+            border-left: 3px solid var(--gold-400); padding: 7px 11px; border-radius: 6px;
+        }
+        .lawyer-credential-floating p {
+            font-size: 0.7rem; color: #e2e8f0; line-height: 1.35; font-weight: 700;
+        }
+        .lawyer-credential-floating strong { color: var(--gold-300); font-size: 0.76rem; }
+        .lawyer-plaque {
+            background: linear-gradient(90deg, #090f21 0%, #131f42 50%, #090f21 100%);
+            padding: 16px 18px; text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .lawyer-plaque .title-role {
+            font-size: 0.76rem; color: var(--gold-300); font-weight: 800; letter-spacing: 0.8px; margin-bottom: 5px;
+        }
+        .lawyer-plaque h3 {
+            font-size: 0.98rem; font-weight: 800; color: #ffffff; line-height: 1.45; word-break: keep-all;
+        }
+        .kpi-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            background: #080e1e; padding: 14px 6px;
+        }
+        .kpi-cell {
+            text-align: center; border-right: 1px solid rgba(255,255,255,0.08); padding: 0 4px;
+        }
+        .kpi-cell:last-child { border-right: none; }
+        .kpi-num { font-size: 0.94rem; font-weight: 900; color: var(--gold-300); margin-bottom: 3px; }
+        .kpi-label { font-size: 0.68rem; color: #94a3b8; font-weight: 600; }
 
-        .header-call-badge {
-            background: #eef5ff;
-            color: #0066cc;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 12px;
+        /* 공통 섹션 스타일 */
+        .section-wrap { padding: 36px 20px; }
+        .section-wrap.bg-ivory { background: var(--bg-ivory); }
+        .section-wrap.bg-navy { background: var(--navy-900); color: #ffffff; }
+        .section-wrap.bg-white { background: #ffffff; }
+        .eyebrow-tag {
+            display: inline-block; font-size: 0.72rem; font-weight: 900;
+            letter-spacing: 1px; padding: 5px 12px; border-radius: 4px; margin-bottom: 10px;
+        }
+        .eyebrow-gold { background: rgba(197, 160, 89, 0.18); color: #8a6621; border: 1px solid rgba(197, 160, 89, 0.4); }
+        .eyebrow-gold-dark { background: rgba(212, 175, 55, 0.15); color: var(--gold-300); border: 1px solid rgba(212, 175, 55, 0.4); }
+        .eyebrow-red { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+        .sec-title {
+            font-size: 1.38rem; font-weight: 900; line-height: 1.4;
+            letter-spacing: -0.6px; margin-bottom: 10px; word-break: keep-all;
+        }
+        .sec-desc {
+            font-size: 0.88rem; line-height: 1.62; color: var(--text-muted);
+            margin-bottom: 22px; word-break: keep-all;
+        }
+        .sec-desc.light { color: #cbd5e1; }
+
+        /* [신규 추가] 진정성 스토리텔링: 우리가 이 광고를 시작할 수밖에 없었던 이유 */
+        .sincere-story-section {
+            padding: 34px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f2eb 100%);
+            border-bottom: 1px solid #e5dec9;
+        }
+        .story-letter-card {
+            background: #ffffff;
             border-radius: 20px;
-            text-decoration: none;
-            border: 1px solid rgba(0, 102, 204, 0.2);
-        }
-
-        .ambient-bg-decor {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 480px;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .floating-symbol {
-            position: absolute;
-            font-size: 13rem;
-            opacity: 0.04;
-            transition: all 0.8s ease-in-out;
-            transform: scale(0.8);
-        }
-
-        #symbol1 { top: 12%; left: -20%; }
-        #symbol2 { top: 40%; right: -25%; color: #ff3b30; }
-        #symbol3 { top: 65%; left: -15%; color: #007AFF; }
-        #symbol4 { top: 75%; right: -15%; color: #d4af37; }
-
-        .content-scroll-area {
-            position: relative;
-            width: 100%;
-            z-index: 2;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .gap-tight { margin-top: 8px; gap: 12px; }
-        .gap-double { margin-top: 50px; }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.07);
-            border-radius: 22px;
             padding: 26px 22px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            opacity: 0.28;
-            transform: translateY(12px);
-            transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+            border: 1px solid rgba(197, 160, 89, 0.55);
+            border-top: 5px solid var(--navy-900);
+            box-shadow: 0 16px 38px rgba(11, 19, 43, 0.08);
             position: relative;
-            z-index: 3;
         }
-
-        .info-card.active {
-            opacity: 1;
-            transform: translateY(0);
-            border-color: rgba(0, 122, 255, 0.4);
-            box-shadow: 0 15px 35px rgba(0,122,255,0.12), 0 0 25px rgba(0,122,255,0.06);
+        .story-quote-mark {
+            font-family: Georgia, serif;
+            font-size: 3.2rem;
+            line-height: 1;
+            color: rgba(197, 160, 89, 0.35);
+            margin-bottom: -14px;
         }
-
-        .info-card.intro-relief-card.active {
-            border-color: rgba(16, 185, 129, 0.5);
-            background: linear-gradient(145deg, rgba(240, 253, 244, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.14);
-        }
-
-        .info-card.danger-card.active {
-            border-color: rgba(255, 59, 48, 0.45);
-            background: rgba(255, 245, 245, 0.98);
-            box-shadow: 0 15px 35px rgba(255,59,48,0.12), 0 0 30px rgba(255, 59, 48, 0.08);
-        }
-
-        .info-card.trust-card.active {
-            border-color: rgba(0, 122, 255, 0.45);
-            background: rgba(240, 247, 255, 0.98);
-            box-shadow: 0 15px 35px rgba(0,122,255,0.12), 0 0 30px rgba(0, 122, 255, 0.08);
-        }
-
-        .info-card.conclusion-card.active {
-            border-color: rgba(212, 175, 55, 0.85);
-            background: linear-gradient(135deg, rgba(255, 253, 240, 0.98) 0%, rgba(255, 248, 220, 0.98) 100%);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-        }
-
-        .step-badge {
-            display: inline-block;
-            padding: 5px 11px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .main-message {
-            font-size: 1.32rem;
-            font-weight: 800;
-            line-height: 1.48;
-            color: #1a1a1a;
-            word-break: keep-all;
-            letter-spacing: -0.4px;
-        }
-
-        .sub-desc {
-            margin-top: 12px;
-            font-size: 0.92rem;
-            line-height: 1.6;
-            color: #555;
-            word-break: keep-all;
-        }
-
-        .pain-point-list {
-            margin-top: 14px;
-            background: rgba(0,0,0,0.035);
-            border-radius: 14px;
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .pain-point-item {
-            font-size: 0.88rem;
-            color: #333;
-            font-weight: 600;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
+        .story-headline {
+            font-size: 1.24rem;
+            font-weight: 900;
             line-height: 1.45;
-            word-break: keep-all;
-        }
-
-        .main-message .highlight { color: #0066cc; }
-        .main-message .highlight-green { color: #059669; }
-
-        .lawyer-photo-card {
-            background: linear-gradient(180deg, #ffffff 0%, #f0f6ff 100%);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 50, 120, 0.14);
-            border: 2px solid rgba(0, 122, 255, 0.35);
-            opacity: 0.28;
-            transform: translateY(12px);
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 3;
-        }
-
-        .lawyer-photo-card.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .photo-wrapper {
-            width: 100%;
-            padding-top: 15px;
-            background: radial-gradient(circle at 50% 35%, #ffffff 0%, #dce8fc 100%);
-            text-align: center;
-            line-height: 0;
-        }
-
-        .photo-wrapper img {
-            width: 92%;
-            max-width: 380px;
-            height: auto;
-            display: inline-block;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
-        }
-
-        .photo-caption-bar {
-            padding: 16px 18px;
-            background: linear-gradient(90deg, #003366 0%, #0056b3 100%);
-            color: #fff;
-            text-align: center;
-        }
-
-        .photo-caption-bar h3 {
-            font-size: 0.98rem;
-            font-weight: 800;
-            line-height: 1.4;
-            letter-spacing: -0.3px;
-        }
-
-        .question-box {
-            text-align: center;
-            padding: 16px 20px;
-            background: rgba(0, 122, 255, 0.06);
-            border: 1px dashed rgba(0, 122, 255, 0.35);
-            border-radius: 25px;
-            margin: 6px 0;
-            opacity: 0.28;
-            transform: translateY(10px);
-            transition: all 0.35s ease;
-            position: relative;
-            z-index: 3;
-        }
-
-        .question-box.active {
-            opacity: 1;
-            transform: translateY(0);
-            background: rgba(0, 122, 255, 0.14);
-            border-color: rgba(0, 122, 255, 0.75);
-            box-shadow: 0 0 25px rgba(0, 122, 255, 0.14);
-        }
-
-        .question-text {
-            color: #0056b3;
-            font-size: 1.1rem;
-            font-weight: 800;
+            color: var(--navy-900);
             letter-spacing: -0.5px;
-        }
-
-        .doc-mockup-card {
-            background: #ffffff;
-            color: #1a1a1a;
-            border-radius: 16px;
-            padding: 20px 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            opacity: 0.28;
-            transform: translateY(10px);
-            transition: all 0.35s ease;
-            position: relative;
-            z-index: 3;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-top: 4px solid #007AFF;
-        }
-
-        .doc-mockup-card.active {
-            opacity: 1;
-            transform: translateY(0);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .doc-header {
-            text-align: center;
-            font-weight: 800;
-            font-size: 1rem;
-            margin-bottom: 12px;
-            color: #000;
-            border-bottom: 2px solid #333;
-            padding-bottom: 8px;
-        }
-
-        .doc-body {
-            font-size: 0.84rem;
-            line-height: 1.55;
-            color: #333;
-        }
-
-        .doc-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .doc-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.78rem;
-        }
-
-        .doc-table th, .doc-table td {
-            border: 1px solid #ccc;
-            padding: 6px;
-            text-align: center;
-        }
-
-        .doc-table th {
-            background-color: #e6f2ff;
-            color: #004080;
-            font-weight: 700;
-        }
-
-        .doc-caption {
-            font-size: 0.78rem;
-            color: #0056b3;
-            text-align: center;
-            margin-top: 12px;
-            font-weight: 700;
-        }
-
-        .daangn-review-card {
-            background: #ffffff;
-            color: #1a1a1a;
-            border-radius: 16px;
-            padding: 20px 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            opacity: 0.28;
-            transform: translateY(10px);
-            transition: all 0.35s ease;
-            position: relative;
-            z-index: 3;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-top: 4px solid #ff6f0f;
-        }
-
-        .daangn-review-card.active {
-            opacity: 1;
-            transform: translateY(0);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .daangn-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
-        }
-
-        .daangn-title {
-            font-weight: 800;
-            font-size: 0.95rem;
-            color: #ff6f0f;
-        }
-
-        .daangn-rating {
-            font-size: 0.82rem;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .daangn-body {
-            font-size: 0.85rem;
-            line-height: 1.55;
-            color: #333;
             word-break: keep-all;
-        }
-
-        .daangn-caption {
-            font-size: 0.76rem;
-            color: #ff6f0f;
-            text-align: center;
-            margin-top: 10px;
-            font-weight: 700;
-        }
-
-        .promise-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 24px 16px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0, 122, 255, 0.25);
-            opacity: 0.28;
-            transform: translateY(12px);
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 3;
-        }
-
-        .promise-card.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .promise-title {
-            text-align: center;
-            font-size: 1.12rem;
-            font-weight: 800;
-            color: #003366;
             margin-bottom: 16px;
-            letter-spacing: -0.5px;
         }
-
-        .promise-list {
+        .story-headline .highlight-crimson {
+            color: #be123c;
+            background: rgba(254, 226, 226, 0.65);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .story-body {
+            font-size: 0.9rem;
+            line-height: 1.72;
+            color: #334155;
+            word-break: keep-all;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 14px;
         }
-
-        .promise-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #f8faff;
-            padding: 13px 14px;
-            border-radius: 14px;
-            border: 1px solid #e1ecff;
-        }
-
-        .promise-icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .promise-text {
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: #222;
-            letter-spacing: -0.6px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .judge-character-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 12px 0;
-            position: relative;
-            z-index: 2;
-            opacity: 0.35;
-            transition: opacity 0.4s ease;
-        }
-
-        .judge-character-section.active { opacity: 1; }
-
-        .judge-avatar-box {
-            background: linear-gradient(135deg, rgba(230, 245, 238, 0.98), rgba(209, 250, 229, 0.98));
-            border: 2px solid rgba(16, 185, 129, 0.45);
-            border-radius: 50%;
-            width: 96px;
-            height: 96px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.25);
-            transition: transform 0.15s ease-out;
-            will-change: transform;
-        }
-
-        .handshake-emoji {
-            font-size: 3.5rem;
-            line-height: 1;
-            display: inline-block;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
-            animation: dynamicHandshake 1.3s infinite ease-in-out;
-        }
-
-        @keyframes dynamicHandshake {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-7px) rotate(-12deg) scale(1.1); }
-            50% { transform: translateY(3px) rotate(8deg) scale(1.06); }
-            75% { transform: translateY(-5px) rotate(-8deg) scale(1.1); }
-        }
-
-        .arrow-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bg-arrow {
-            font-size: 5.5rem;
-            font-weight: 900;
-            line-height: 1;
-            opacity: 0.25;
-            transition: opacity 0.35s ease;
-        }
-
-        .bg-arrow.active { opacity: 0.95; }
-
-        .arrow-overlap-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -24px;
-            margin-bottom: -10px;
-            position: relative;
-            z-index: 4;
-        }
-
-        .arrow-overlap-section .bg-arrow {
-            font-size: 7.5rem;
-            filter: drop-shadow(0 6px 16px rgba(255, 59, 48, 0.45));
-            animation: bounceUpAndDown 1.8s infinite ease-in-out;
-        }
-
-        @keyframes bounceUpAndDown {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-26px) scale(1.22); }
-        }
-
-        .dual-arrow-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .dual-arrow-container {
-            position: relative;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .bg-giant-arrow {
-            position: absolute;
-            font-size: 9rem;
-            font-weight: 900;
-            color: #007AFF;
-            opacity: 0.12;
-            transform: scale(1.4);
-            z-index: 1;
-            pointer-events: none;
-            animation: giantBounce 3s infinite ease-in-out;
-        }
-
-        @keyframes giantBounce {
-            0%, 100% { transform: scale(1.3) translateY(0); opacity: 0.1; }
-            50% { transform: scale(1.6) translateY(12px); opacity: 0.25; }
-        }
-
-        .dual-arrow-section .bg-arrow { animation: bounceDownAndUp 2s infinite ease-in-out; }
-
-        @keyframes bounceDownAndUp {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(18px) scale(1.15); }
-        }
-
-        .arrow-section .bg-arrow { animation: standardFloat 2.2s infinite ease-in-out; }
-
-        @keyframes standardFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-
-        .effect-section {
-            width: 100%;
-            margin: 15px 0;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-            opacity: 0.25;
-            transform: scale(0.9);
-            transition: all 0.4s ease;
-        }
-
-        .effect-section.active {
-            opacity: 1;
-            transform: scale(1.15);
-        }
-
-        .effect-icon {
-            font-size: 3.4rem;
-            filter: grayscale(40%);
-            transition: filter 0.3s ease, transform 0.3s ease;
-        }
-
-        .effect-section.active .effect-icon {
-            filter: grayscale(0%);
-            animation: pulseEffect 1.5s infinite alternate;
-        }
-
-        @keyframes pulseEffect {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.12); }
-        }
-
-        .consult-form-card {
-            background: #1a2536;
-            color: #ffffff;
-            border-radius: 24px;
-            padding: 28px 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 3;
-            margin-top: 15px;
-        }
-
-        .consult-badge-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 22px;
-            text-align: center;
-        }
-
-        .consult-mini-badge {
-            background: rgba(255,255,255,0.08);
-            padding: 12px 4px;
-            border-radius: 12px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: #dbeafe;
-            border: 1px solid rgba(255,255,255,0.12);
-            line-height: 1.45;
-            word-break: keep-all;
-        }
-
-        .consult-mini-badge .badge-icon {
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .consult-form-title {
-            text-align: center;
-            font-size: 1.3rem;
+        .story-body p strong {
+            color: var(--navy-950);
             font-weight: 800;
-            margin-bottom: 6px;
-            color: #fff;
         }
-
-        .consult-form-sub {
-            text-align: center;
-            font-size: 0.84rem;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
-        .form-group { margin-bottom: 12px; }
-
-        .form-input {
-            width: 100%;
+        .story-callout-box {
+            background: #fdfaf3;
+            border-left: 4px solid var(--gold-500);
             padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .form-input::placeholder { color: #94a3b8; }
-
-        .form-submit-btn {
-            width: 100%;
-            padding: 16px;
-            border-radius: 14px;
-            border: none;
-            background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 800;
-            cursor: pointer;
-            margin-top: 8px;
-            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.35);
-            transition: opacity 0.2s ease;
-        }
-
-        .success-message-box {
-            display: none;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.5);
-            border-radius: 16px;
-            padding: 24px 18px;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .success-message-box h4 {
-            color: #34d399;
-            font-size: 1.15rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .success-message-box p {
-            color: #e2e8f0;
+            border-radius: 0 12px 12px 0;
+            margin: 6px 0;
             font-size: 0.88rem;
-            line-height: 1.5;
+            font-weight: 700;
+            color: var(--navy-900);
+            line-height: 1.6;
+        }
+        .story-signature {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+            text-align: right;
+        }
+        .sig-text {
+            font-size: 0.82rem;
+            color: #64748b;
+            font-weight: 700;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .sig-name {
+            font-size: 1.02rem;
+            font-weight: 900;
+            color: var(--navy-900);
+            letter-spacing: -0.3px;
+            word-break: keep-all;
+            white-space: nowrap;
         }
 
-        .floating-cta-bar {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 480px;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 12px 16px 18px;
-            z-index: 100;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 -8px 25px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 10px;
+        /* 2. 진단 체크리스트 & 공장형 로펌 비교 매트릭스 */
+        .symptom-box {
+            background: #ffffff; border-radius: 16px; padding: 18px;
+            border: 1px solid #e2e8f0; border-left: 4px solid var(--navy-800);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); margin-bottom: 24px;
+        }
+        .symptom-title { font-size: 0.88rem; font-weight: 900; color: var(--navy-900); margin-bottom: 12px; }
+        .symptom-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.85rem; color: #334155; font-weight: 600;
+            line-height: 1.48; margin-bottom: 9px; word-break: keep-all;
+        }
+        .symptom-row:last-child { margin-bottom: 0; }
+        .symptom-check { color: var(--gold-500); font-weight: 900; }
+
+        .comparison-card {
+            border-radius: 18px; overflow: hidden;
+            box-shadow: 0 14px 32px rgba(11, 19, 43, 0.1);
+            border: 1px solid #cbd5e1;
+        }
+        .comp-header { display: grid; grid-template-columns: 46% 54%; }
+        .comp-th-other {
+            background: #334155; color: #cbd5e1; padding: 14px 10px;
+            text-align: center; font-size: 0.82rem; font-weight: 800;
+        }
+        .comp-th-iroom {
+            background: var(--navy-900); color: var(--gold-300); padding: 14px 10px;
+            text-align: center; font-size: 0.86rem; font-weight: 900;
+            border-bottom: 2px solid var(--gold-400);
+        }
+        .comp-row { display: grid; grid-template-columns: 46% 54%; border-top: 1px solid #e2e8f0; }
+        .comp-td-other {
+            background: #f8fafc; color: #64748b; padding: 14px 10px;
+            font-size: 0.8rem; text-align: center; line-height: 1.45; word-break: keep-all;
+        }
+        .comp-td-iroom {
+            background: #ffffff; color: var(--navy-900); padding: 14px 12px;
+            font-size: 0.83rem; font-weight: 800; text-align: center; line-height: 1.45;
+            border-left: 2px solid var(--gold-400); word-break: keep-all;
         }
 
-        .cta-btn-call {
-            flex: 1.2;
-            background: #1a1a1a;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px 12px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 0.92rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
+        /* 3. 실제 결정문 & 변제예정액표 쇼케이스 */
+        .case-stack { display: flex; flex-direction: column; gap: 24px; }
+        .cert-card {
+            background: #131f42; border-radius: 20px; overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+        }
+        .cert-top {
+            background: linear-gradient(90deg, #060b16 0%, #101c3b 100%);
+            padding: 16px 18px; border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        .cert-tag {
+            display: inline-block; background: var(--gold-400); color: var(--navy-950);
+            font-size: 0.7rem; font-weight: 900; padding: 3px 9px; border-radius: 4px; margin-bottom: 7px;
+        }
+        .cert-title { font-size: 1.02rem; font-weight: 800; color: #ffffff; line-height: 1.4; word-break: keep-all; }
+        .reduction-banner {
+            background: rgba(220, 38, 38, 0.14); border-bottom: 1px solid rgba(248, 113, 113, 0.3);
+            padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .reduction-text { font-size: 0.85rem; color: #f8fafc; font-weight: 700; }
+        .reduction-text del { color: #94a3b8; margin-right: 4px; }
+        .reduction-text strong { color: #fde047; font-size: 0.98rem; font-weight: 900; }
+        .reduction-badge {
+            background: #dc2626; color: #ffffff; font-size: 0.78rem; font-weight: 900;
+            padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+        }
+        .cert-gallery { padding: 14px; background: #0b132b; }
+        .cert-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .cert-img-item {
+            background: #ffffff; border-radius: 10px; overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.5); cursor: pointer;
+        }
+        .cert-img-item img { width: 100%; height: auto; display: block; }
+        .cert-zoom-bar {
+            background: var(--navy-950); color: var(--gold-300);
+            font-size: 0.71rem; font-weight: 700; text-align: center; padding: 6px;
+        }
+        .cert-summary {
+            padding: 14px 16px; background: #162447; color: #e2e8f0;
+            font-size: 0.82rem; line-height: 1.55; word-break: keep-all;
+        }
+        .cert-summary strong { color: var(--gold-300); }
+
+        /* 4. 당근마켓 공식 프로필 연동 섹션 */
+        .daangn-showcase {
+            background: #ffffff; border-radius: 20px; padding: 22px 18px;
+            border: 2px solid #ff6f0f; box-shadow: 0 12px 30px rgba(255, 111, 15, 0.1);
+            margin-bottom: 24px;
+        }
+        .daangn-header-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid #f1f5f9;
+        }
+        .daangn-badge-title { font-size: 0.96rem; font-weight: 900; color: #ff6f0f; }
+        .daangn-star-pill {
+            background: #fff7ed; color: #9a3412; font-size: 0.82rem; font-weight: 900;
+            padding: 5px 10px; border-radius: 99px; border: 1px solid #fed7aa;
+        }
+        .review-bubble {
+            background: #f8fafc; border-radius: 14px; padding: 14px;
+            border: 1px solid #e2e8f0; margin-bottom: 14px;
+        }
+        .review-bubble h4 { font-size: 0.9rem; font-weight: 800; color: var(--navy-900); margin-bottom: 6px; }
+        .review-bubble p { font-size: 0.84rem; color: #475569; line-height: 1.55; word-break: keep-all; }
+        .daangn-link-btn {
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            width: 100%; background: #ff6f0f; color: #ffffff; text-decoration: none;
+            font-size: 0.92rem; font-weight: 900; padding: 14px; border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(255, 111, 15, 0.3);
         }
 
-        .cta-btn-form {
-            flex: 1;
-            background: #0066cc;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px 12px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 0.92rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        /* 5. 4단계 체계적 프로세스 & 3대 약속 */
+        .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px; }
+        .process-step {
+            background: #ffffff; border-radius: 14px; padding: 15px 13px;
+            border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .step-num { font-size: 0.7rem; font-weight: 900; color: var(--gold-500); margin-bottom: 4px; }
+        .step-name { font-size: 0.9rem; font-weight: 900; color: var(--navy-900); margin-bottom: 4px; }
+        .step-sub { font-size: 0.76rem; color: #64748b; line-height: 1.4; word-break: keep-all; }
+
+        .promise-card-gold {
+            background: var(--navy-900); color: #ffffff; border-radius: 18px;
+            padding: 20px 16px; border: 1px solid var(--gold-400);
+        }
+        .promise-card-gold h3 {
+            text-align: center; font-size: 1rem; font-weight: 900;
+            color: var(--gold-300); margin-bottom: 14px;
+        }
+        .promise-item-row {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 11px 13px; margin-bottom: 8px;
+            font-size: 0.84rem; font-weight: 700; display: flex; align-items: center; gap: 8px;
+        }
+        .promise-item-row:last-child { margin-bottom: 0; }
+
+        /* 6. 자주 묻는 질문 (FAQ) */
+        .faq-item {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 15px 16px; margin-bottom: 10px;
+        }
+        .faq-q { font-size: 0.9rem; font-weight: 900; color: var(--navy-900); margin-bottom: 6px; word-break: keep-all; }
+        .faq-a { font-size: 0.83rem; color: #475569; line-height: 1.55; word-break: keep-all; }
+
+        /* 7. VIP 비밀 상담 신청 폼 (Formspree 연동) */
+        .vip-form-section {
+            background: linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 100%);
+            color: #ffffff; padding: 36px 20px 32px;
+            border-top: 3px solid var(--gold-400);
+        }
+        .form-Perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 22px; }
+        .perk-box {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(197, 160, 89, 0.35);
+            border-radius: 12px; padding: 10px 6px; text-align: center;
+            font-size: 0.75rem; font-weight: 700; color: var(--gold-100); line-height: 1.38;
+        }
+        .form-title { text-align: center; font-size: 1.4rem; font-weight: 900; margin-bottom: 6px; }
+        .form-title span { color: var(--gold-300); }
+        .form-sub { text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: 22px; line-height: 1.5; }
+        .field-group { margin-bottom: 16px; }
+        .field-label { display: block; font-size: 0.8rem; font-weight: 800; color: var(--gold-300); margin-bottom: 6px; }
+        .field-input {
+            width: 100%; padding: 14px 16px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.07);
+            color: #ffffff; font-size: 0.95rem; font-weight: 600; outline: none;
+        }
+        .field-input:focus { border-color: var(--gold-400); background: rgba(255,255,255,0.12); }
+        .chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .select-chip {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2);
+            color: #cbd5e1; padding: 12px 8px; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 700; text-align: center; cursor: pointer;
+        }
+        .select-chip.active {
+            background: linear-gradient(135deg, var(--gold-400) 0%, #9e7a2f 100%);
+            border-color: var(--gold-300); color: var(--navy-950); font-weight: 900;
+        }
+        .consent-wrap {
+            margin: 16px 0; background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px;
+        }
+        .consent-check {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 700; color: #e2e8f0; cursor: pointer;
+        }
+        .consent-desc { font-size: 0.7rem; color: #64748b; margin-top: 6px; line-height: 1.45; }
+        .vip-submit-btn {
+            width: 100%; padding: 17px; border-radius: 14px; border: none;
+            background: linear-gradient(90deg, var(--gold-400) 0%, #b38b32 100%);
+            color: var(--navy-950); font-size: 1.05rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+        }
+        .done-box {
+            display: none; background: rgba(16, 185, 129, 0.15);
+            border: 1px solid #10b981; border-radius: 16px; padding: 24px 18px;
+            text-align: center; margin-top: 14px;
+        }
+        .done-box h4 { color: #34d399; font-size: 1.15rem; font-weight: 900; margin-bottom: 8px; }
+        .done-box p { color: #e2e8f0; font-size: 0.86rem; line-height: 1.55; }
+
+        .legal-footer {
+            background: #04070f; color: #64748b; padding: 24px 20px 30px;
+            font-size: 0.74rem; line-height: 1.65;
+        }
+        .legal-footer strong { color: #94a3b8; }
+
+        /* 하단 고정 플로팅 바 */
+        .floating-bar {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 480px; background: rgba(6, 11, 22, 0.96);
+            backdrop-filter: blur(12px); padding: 10px 14px 16px; z-index: 100;
+            border-top: 1px solid rgba(212, 175, 55, 0.4); display: flex; gap: 10px;
+        }
+        .float-btn-tel {
+            flex: 1; background: #1e293b; color: #ffffff; text-decoration: none;
+            padding: 14px 8px; border-radius: 12px; font-weight: 800; font-size: 0.88rem;
+            text-align: center; border: 1px solid rgba(255,255,255,0.15);
+        }
+        .float-btn-Apply {
+            flex: 1.25; background: linear-gradient(90deg, var(--gold-400) 0%, #b38b32 100%);
+            color: var(--navy-950); text-decoration: none; padding: 14px 8px;
+            border-radius: 12px; font-weight: 900; font-size: 0.9rem; text-align: center;
+        }
+
+        /* 모달 */
+        .img-modal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+            z-index: 999; justify-content: center; align-items: center; padding: 16px;
+        }
+        .img-modal.open { display: flex; }
+        .img-modal img { max-width: 100%; max-height: 88vh; border-radius: 8px; background: #fff; }
+        .modal-close-btn {
+            position: absolute; top: 18px; right: 18px; background: var(--gold-400);
+            color: var(--navy-950); border: none; border-radius: 99px;
+            padding: 8px 14px; font-size: 0.85rem; font-weight: 900; cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <div class="mobile-container">
+        <!-- 최상단 실시간 상태 바 -->
+        <div class="top-status-bar">
+            <div class="live-dot-wrap"><span class="live-dot"></span>부산회생법원 정문 앞 1분</div>
+            <div>1:1 비공개 비밀상담 운영 중</div>
+        </div>
 
-    <div class="mobile-container theme-empathy" id="mobileContainer">
-        
-        <!-- 상단 고정 헤더: 요청하신 문구로 변경 완료 -->
+        <!-- 스티키 헤더 -->
         <header class="brand-header">
-            <div class="brand-logo">한번에 끝내주는 <span>이룸 법률사무소</span></div>
-            <a href="tel:1533-0560" class="header-call-badge">🔒 100% 비밀상담</a>
+            <div class="brand-title-group">
+                <span class="brand-sub-label">BUSAN BANKRUPTCY LAW CENTER</span>
+                <div class="brand-logo">이룸법률사무소 회생·파산전담</div>
+            </div>
+            <a href="tel:1533-0560" class="header-call-btn">📞 1533-0560</a>
         </header>
 
-        <div class="ambient-bg-decor">
-            <div class="floating-symbol" id="symbol1">🌱</div>
-            <div class="floating-symbol" id="symbol2">⛈️</div>
-            <div class="floating-symbol" id="symbol3">⚖️</div>
-            <div class="floating-symbol" id="symbol4">🏆</div>
-        </div>
+        <!-- 1. 히어로 섹션 -->
+        <section class="hero-section">
+            <div class="hero-badge">🏛️ 부산회생법원 정문 바로 앞 (거제동 덕원빌딩 3층)</div>
+            <h1 class="hero-headline">
+                부산 사람이라면 제발!<br>
+                타 지역 사무실에 맡겨서<br>
+                <span class="warn-underline">기각·불인가 피해</span> 보지 마십시오
+            </h1>
+            <p class="hero-lead">
+                지역마다 법원의 회생위원 성향과 보정 기준이 전혀 다릅니다.<br>
+                <strong style="color:#fde68a;">부산회생법원 사정을 가장 잘 아는 지역 밀착 로펌</strong>에서<br>
+                이자는 100%, 원금은 최대 90% 이상 합법적으로 감면받으세요.
+            </p>
 
-        <div class="content-scroll-area" id="scrollArea">
-            
-            <div class="info-card scroll-item active" id="intro0" data-theme="empathy">
-                <div class="step-badge" style="background: rgba(100, 116, 139, 0.15); color: #475569;">INTRO 01</div>
-                <h2 class="main-message">혹시 지금 이런 막막한 상황에<br>홀로 서 계신가요?</h2>
-                <div class="pain-point-list">
-                    <div class="pain-point-item"><span>💸</span><span>급한 카드값·대출이자를 막으려 또 다른 대출을 알아보는 돌려막기의 악순환</span></div>
-                    <div class="pain-point-item"><span>📱</span><span>끊이지 않는 추심 전화와 통장·급여 압류에 대한 불안감</span></div>
-                    <div class="pain-point-item"><span>👨‍👩‍👧</span><span>나로 인해 사랑하는 가족들까지 고통받을까 봐 조마조마한 하루</span></div>
+            <div class="lawyer-showcase-card">
+                <div class="lawyer-img-frame">
+                    <div class="lawyer-credential-floating">
+                        <p><strong>장혜승 대표변호사</strong><br>부산회생법원 관할 밀착 대응<br>수천 건의 도산 사건 노하우</p>
+                    </div>
+                    <img src="변호사이미지.png" alt="이룸법률사무소 장혜승 대표변호사">
                 </div>
-            </div>
-
-            <div class="info-card intro-relief-card scroll-item active" id="intro1" data-theme="empathy">
-                <div class="step-badge" style="background: rgba(16, 185, 129, 0.18); color: #059669;">INTRO 02 · 희망의 시작</div>
-                <h2 class="main-message">모두가 힘든 시기,<br>혼자 견디지 마세요.<br><span class="highlight-green">국가가 지원하는 개인회생 제도</span>에<br>당당히 기댈 수 있습니다.</h2>
-                <p class="sub-desc">법원이 강제로 채무를 조정해 이자는 100%, 원금은 최대 90% 이상 감면해 주어 평온한 일상 복귀를 돕는 합법적 권리입니다.</p>
-            </div>
-
-            <div class="judge-character-section scroll-item" id="judgeZone" data-theme="empathy">
-                <div class="judge-avatar-box" id="handshakeBox">
-                    <span class="handshake-emoji">🤝</span>
-                </div>
-            </div>
-
-            <div class="info-card scroll-item gap-tight" id="card0" data-theme="default">
-                <div class="step-badge" style="background: rgba(255, 59, 48, 0.15); color: #ff3b30;">POINT 01</div>
-                <h2 class="main-message">그런데 여러분,<br>그거 아세요?</h2>
-            </div>
-
-            <div class="info-card scroll-item" id="card1" data-theme="default">
-                <div class="step-badge" style="background: rgba(255, 59, 48, 0.15); color: #ff3b30;">POINT 02</div>
-                <h2 class="main-message">개인회생 신청이<br>급증하고 있어요.</h2>
-            </div>
-
-            <div class="arrow-overlap-section">
-                <div class="bg-arrow scroll-item" id="arrow1" data-theme="default" style="color: #ff3b30;">↑</div>
-            </div>
-
-            <div class="info-card gap-double scroll-item" id="card2" data-theme="default">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.15); color: #007AFF;">POINT 03</div>
-                <h2 class="main-message">하지만 인가율은<br>급락하고 있다는 불편한 사실</h2>
-            </div>
-
-            <div class="dual-arrow-section">
-                <div class="dual-arrow-container">
-                    <div class="bg-giant-arrow">↓</div>
-                    <div class="bg-arrow scroll-item" id="arrow2" data-theme="default" style="color: #007AFF; position: relative; z-index: 2;">↓</div>
-                </div>
-            </div>
-
-            <div class="info-card scroll-item" id="card3" data-theme="default">
-                <div class="step-badge" style="background: rgba(255, 149, 0, 0.15); color: #ff9500;">POINT 04</div>
-                <h2 class="main-message">공장형 법률사무소에 맡겼다가<br>기각·불인가되는 피해가<br>늘어나고 있어요...</h2>
-            </div>
-
-            <div class="effect-section scroll-item" id="stormZone" data-theme="danger">
-                <div class="effect-icon">⛈️</div>
-            </div>
-
-            <div class="info-card danger-card scroll-item" id="card4" data-theme="danger">
-                <div class="step-badge" style="background: rgba(255, 59, 48, 0.2); color: #ff3b30;">POINT 05</div>
-                <h2 class="main-message">안 그래도 힘든 시기,<br>개인회생마저 불인가 난다면?</h2>
-            </div>
-
-            <div class="effect-section scroll-item" id="tearZone" data-theme="danger">
-                <div class="effect-icon">😢</div>
-            </div>
-
-            <div class="info-card danger-card scroll-item" id="card5" data-theme="danger">
-                <div class="step-badge" style="background: rgba(255, 59, 48, 0.2); color: #ff3b30;">POINT 06</div>
-                <h2 class="main-message">금전적 손해와 의미 없이<br>지나간 시간은 어쩌나요..</h2>
-            </div>
-
-            <div class="effect-section scroll-item" id="hopeZone" data-theme="trust">
-                <div class="effect-icon">✨</div>
-            </div>
-
-            <div class="info-card trust-card scroll-item" id="card6" data-theme="trust">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.2); color: #0066cc;">POINT 07</div>
-                <h2 class="main-message">그래서 저희<br>이룸이 왔습니다.</h2>
-            </div>
-
-            <div class="lawyer-photo-card scroll-item" id="lawyerPhotoCard" data-theme="trust">
-                <div class="photo-wrapper">
-                    <img src="변호사이미지.png" alt="이룸 법률사무소 대표변호사 장혜승">
-                </div>
-                <div class="photo-caption-bar">
+                <div class="lawyer-plaque">
+                    <div class="title-role">IROOM LAW OFFICE REPRESENTATIVE LAWYER</div>
                     <h3>"내 일처럼 끝까지 함께하여 마침내 이뤄내겠습니다"</h3>
                 </div>
-            </div>
-
-            <div class="question-box scroll-item" id="q1" data-theme="trust">
-                <p class="question-text">Q. 왜 부산은 이룸인가요?</p>
-            </div>
-
-            <div class="info-card trust-card scroll-item" id="card7" data-theme="trust">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.2); color: #0066cc;">POINT 08</div>
-                <h2 class="main-message">개인회생은 <span class="highlight">지역 법원을 잘 아는<br>법률사무소</span>에 맡기셔야<br>어떠한 변수도 대응 가능합니다.</h2>
-            </div>
-
-            <div class="doc-mockup-card scroll-item" id="case1" data-theme="trust">
-                <div class="doc-header">부 산 회 생 법 원 결정문 (실제사례)</div>
-                <div class="doc-body">
-                    <div class="doc-row"><span>사건: 2025개회 개인회생</span><span>대리인: 변호사 장혜승</span></div>
-                    <hr style="margin: 6px 0; border:0; border-top:1px solid #ddd;">
-                    <p style="font-weight:bold; margin-bottom:4px;">[ 주 문 ]</p>
-                    <p>1. 채무자에 대하여 개인회생절차를 개시한다.</p>
-                    <p>2. 이의기간 및 채권자집회기일 지정 완료</p>
-                </div>
-                <div class="doc-caption">💡 실제 부산회생법원 지역 관할 개시결정문 사례</div>
-            </div>
-
-            <div class="question-box scroll-item" id="q2" data-theme="trust">
-                <p class="question-text">Q. 이룸을 어떻게 믿을 수 있나요?</p>
-            </div>
-
-            <div class="info-card trust-card scroll-item" id="card8" data-theme="trust">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.2); color: #0066cc;">POINT 09</div>
-                <h2 class="main-message">이룸은 이미 <span class="highlight">당근에서 가장 많은<br>후기</span>를 보유한 검증된<br>지역 밀착형 법률사무소입니다.</h2>
-            </div>
-
-            <div class="daangn-review-card scroll-item" id="daangnReview" data-theme="trust">
-                <div class="daangn-header">
-                    <span class="daangn-title">🥕 당근 비즈니스 실제 후기 인증</span>
-                    <span class="daangn-rating">⭐ 4.7 (후기 91건)</span>
-                </div>
-                <div class="daangn-body">
-                    <p style="font-weight:bold; margin-bottom:6px; color:#222;">"합리적인 금액과 친절함에 바로 결정했습니다"</p>
-                    <p style="color:#555;">"자영업으로 인해 늘어난 빚 때문에 앞이 막막했습니다.. 열심히 알아보고 여러 곳 상담하고 난 후 합리적인 금액과 진심 어린 상담에 바로 결정하게 되었습니다."</p>
-                </div>
-                <div class="daangn-caption">💡 당근마켓 법률서비스 부문 최다 수준 후기 인증</div>
-            </div>
-
-            <div class="question-box scroll-item" id="q3" data-theme="trust">
-                <p class="question-text">Q. 이룸에서 진행해야 하는 이유가 뭔가요?</p>
-            </div>
-
-            <div class="info-card trust-card scroll-item" id="card9" data-theme="trust">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.2); color: #0066cc;">POINT 10</div>
-                <h2 class="main-message">개인회생은 무조건<br><span class="highlight">경험이 풍부한 곳</span>에서 진행해야<br>인가 확률이 압도적으로 높습니다.</h2>
-            </div>
-
-            <div class="doc-mockup-card scroll-item" id="case2" data-theme="trust">
-                <div class="doc-header">개인회생채권 변제예정액표 (실제사례)</div>
-                <div class="doc-body">
-                    <div class="doc-row"><span>월 평균 가용소득</span><span style="font-weight:bold; color:#0056b3;">731,993원</span></div>
-                    <div class="doc-row"><span>변제 횟수</span><span>45회 (총 3,261만 원)</span></div>
-                    <table class="doc-table">
-                        <tr><th>채권자</th><th>확정채권액</th><th>변제율</th></tr>
-                        <tr><td>한국OO (만촌지점)</td><td>184,000,000원</td><td><strong>원금의 9.7%</strong></td></tr>
-                        <tr><td>에스오디유외</td><td>2,990,189원</td><td>상당액 인가</td></tr>
-                    </table>
-                </div>
-                <div class="doc-caption">💡 의뢰인 맞춤형 변제예정액표 및 탕감 산정 사례</div>
-            </div>
-
-            <div class="question-box scroll-item" id="q4" data-theme="trust">
-                <p class="question-text">Q. 이룸에서 진행하면 인가받을 수 있나요?</p>
-            </div>
-
-            <div class="info-card trust-card scroll-item" id="card10" data-theme="trust">
-                <div class="step-badge" style="background: rgba(0, 122, 255, 0.2); color: #0066cc;">POINT 11</div>
-                <h2 class="main-message">저희 이룸에는 이미<br><span class="highlight">수천 건의 성공 경험과 노하우</span>가<br>탄탄하게 축적되어 있습니다.</h2>
-            </div>
-
-            <div class="promise-card scroll-item" id="promiseZone" data-theme="trust">
-                <div class="promise-title">오직 결과로 증명하는 이룸의 3대 약속</div>
-                <div class="promise-list">
-                    <div class="promise-item">
-                        <span class="promise-icon">🏛️</span>
-                        <span class="promise-text">1. 부산회생법원·지방법원 관할 밀착 대응</span>
+                <div class="kpi-grid">
+                    <div class="kpi-cell">
+                        <div class="kpi-num">90%+</div>
+                        <div class="kpi-label">원금 최대탕감</div>
                     </div>
-                    <div class="promise-item">
-                        <span class="promise-icon">📑</span>
-                        <span class="promise-text">2. 수천 건 경력의 전담변호사 직접 진행</span>
+                    <div class="kpi-cell">
+                        <div class="kpi-num">100%</div>
+                        <div class="kpi-label">이자 전액면제</div>
                     </div>
-                    <div class="promise-item">
-                        <span class="promise-icon">🤫</span>
-                        <span class="promise-text">3. 가족·직장 모르게 1:1 비공개 상담</span>
+                    <div class="kpi-cell">
+                        <div class="kpi-num">★ 4.7</div>
+                        <div class="kpi-label">당근후기 91건</div>
+                    </div>
+                    <div class="kpi-cell">
+                        <div class="kpi-num">즉시중단</div>
+                        <div class="kpi-label">추심·압류방어</div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="info-card conclusion-card scroll-item" id="card11" data-theme="conclusion">
-                <div class="step-badge" style="background: rgba(212, 175, 55, 0.2); color: #b8860b;">POINT 12</div>
-                <h2 class="main-message" style="text-align: center; font-size: 1.5rem;">생각할수록<br><span style="color: #b8860b;">결론은 이룸</span>입니다.</h2>
+        <!-- [신규 섹션] 광고 거부감을 없애는 진정성 스토리텔링: 이룸이 직접 홍보에 나선 이유 -->
+        <section class="sincere-story-section">
+            <span class="eyebrow-tag eyebrow-red">SINCERE MESSAGE · 이룸이 직접 목소리를 내는 이유</span>
+            <div class="story-letter-card">
+                <div class="story-quote-mark">“</div>
+                <h2 class="story-headline">
+                    하루에도 한두 분씩,<br>
+                    타 지역 사무실에서 <span class="highlight-crimson">불인가·기각</span>을 받고<br>
+                    눈물로 저희 사무실을 찾아오십니다.
+                </h2>
+                <div class="story-body">
+                    <p>
+                        절박한 마음에 화려한 인터넷 광고만 보고 덜컥 서울이나 타 지역 공장형 사무실에 사건을 맡겼다가, 부산회생법원만의 까다로운 심사 기준을 넘지 못해 <strong>기각·불인가 결정</strong>을 받고 찾아오시는 부산 시민분들이 하루에도 한두 분씩 계십니다.
+                    </p>
+                    <p>
+                        날아간 수임료보다 더 가슴 아픈 것은, <strong>그동안 쏟아부은 수개월의 시간과 노력, 그리고 '이제 다시 살 수 있다'는 마지막 희망이 무참히 짓밟혔을 때 겪으시는 참담한 충격과 절망감</strong>입니다.
+                    </p>
+                    <div class="story-callout-box">
+                        "변호사님, 법원 바로 앞에 이런 곳이 있는 줄 진작 알았더라면 제가 피 같은 시간과 희망을 날리지 않았을 텐데요..."
+                    </div>
+                    <p>
+                        부산회생법원 정문 앞에서 매일같이 이런 눈물 섞인 하소연을 마주하며, 저희는 더 이상 침묵할 수 없었습니다. <strong>저희 이룸이 이렇게 직접 홍보에 나선 단 하나의 이유</strong>는, 부산 시민분들이 과장된 타 지역 공장형 광고에 속아 두 번 상처받는 일을 막기 위해서입니다.
+                    </p>
+                </div>
+                <div class="story-signature">
+                    <span class="sig-text">부산회생법원 정문 앞, 당신의 마지막 든든한 방패</span>
+                    <span class="sig-name">대표변호사 장 혜 승 드림</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 현실 공감 및 공장형 비교 매트릭스 -->
+        <section class="section-wrap bg-ivory">
+            <span class="eyebrow-tag eyebrow-gold">WHY LOCAL SPECIALIST</span>
+            <h2 class="sec-title">개인회생 신청은 급증하는데,<br>왜 타 지역에 맡기면 기각될까요?</h2>
+            <p class="sec-desc">
+                사건 진행 비용이 비슷하다면, 처음부터 부산회생법원 회생위원의 성향과 변수를 훤히 꿰뚫고 있는 법원 앞 사무실에서 시작하셔야 소중한 시간과 희망을 지킬 수 있습니다.
+            </p>
+
+            <div class="symptom-box">
+                <div class="symptom-title">하나라도 해당된다면 지금 즉시 진단이 필요합니다</div>
+                <div class="symptom-row"><span class="symptom-check">✔</span><span>급한 카드값·대출이자를 막으려 또 대출을 알아보는 돌려막기 상태</span></div>
+                <div class="symptom-row"><span class="symptom-check">✔</span><span>끊이지 않는 추심 독촉과 통장·급여 압류로 일상이 무너진 분</span></div>
+                <div class="symptom-row"><span class="symptom-check">✔</span><span>가족이나 직장에 절대 알리지 않고 100% 비밀리에 해결하고 싶은 분</span></div>
             </div>
 
-            <div class="consult-form-card" id="consultForm">
-                <div class="consult-badge-row">
-                    <div class="consult-mini-badge">
-                        <span class="badge-icon">🛡️</span>
-                        1:1 맞춤형<br>사건진행
+            <div class="comparison-card">
+                <div class="comp-header">
+                    <div class="comp-th-other">타 지역 공장형 사무실</div>
+                    <div class="comp-th-iroom">부산회생법원 정문 앞 이룸</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-td-other">부산회생법원 성향 파악 불가로 보정명령 대응 실패 위험</div>
+                    <div class="comp-td-iroom">부산회생법원 최신 성향 100% 파악 및 맞춤형 변제안 작성</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-td-other">수임료 결제 후 연락 두절, 무자격 직원이 공장식 처리</div>
+                    <div class="comp-td-iroom">수천 건 경력 장혜승 대표변호사 전담팀 1:1 직접 책임 진행</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-td-other">비용은 비슷한데 법원 현장 이슈 발생 시 즉각 대응 불가</div>
+                    <div class="comp-td-iroom">법원 정문 바로 앞 위치로 어떤 돌발 변수도 즉시 밀착 해결</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 실제 법원 결정문 & 90% 탕감 실물 증명 -->
+        <section class="section-wrap bg-navy">
+            <span class="eyebrow-tag eyebrow-gold-dark">VERIFIED COURT RECORDS</span>
+            <h2 class="sec-title" style="color:#ffffff;">말뿐인 홍보가 아닙니다.<br><span style="color:var(--gold-300);">부산회생법원 실제 결정문</span>으로 증명합니다</h2>
+            <p class="sec-desc light">
+                이룸법률사무소(부산 연제구 법원남로15번길 9, 3층 / 대리인 변호사 장혜승)에서 실제로 인가받은 정본 결정문과 변제예정액표입니다. 이미지를 터치하면 확대됩니다.
+            </p>
+
+            <div class="case-stack">
+                <!-- 사례 1 -->
+                <div class="cert-card">
+                    <div class="cert-top">
+                        <span class="cert-tag">실제사례 01 · 부산 수영구 자영업·소상공인 채무</span>
+                        <div class="cert-title">부산신용보증재단·소상공인 대출 등 3억 3,651만 원 → 3억 390만 원 탕감!</div>
                     </div>
-                    <div class="consult-mini-badge">
-                        <span class="badge-icon">📩</span>
-                        복잡한 서류<br>대행발급
+                    <div class="reduction-banner">
+                        <div class="reduction-text"><del>총 3억 3,651만 원</del> → <strong>월 72만 원</strong></div>
+                        <span class="reduction-badge">원금 90.3% 탕감</span>
                     </div>
-                    <div class="consult-mini-badge">
-                        <span class="badge-icon">🔒</span>
-                        상담내용<br>100% 보안
+                    <div class="cert-gallery">
+                        <div class="cert-grid-2">
+                            <div class="cert-img-item" onclick="openModal('4.png')">
+                                <img src="4.png" alt="부산회생법원 개시결정문 정본">
+                                <div class="cert-zoom-bar">🔍 개시결정문 정본 확대</div>
+                            </div>
+                            <div class="cert-img-item" onclick="openModal('6.png')">
+                                <img src="6.png" alt="변제율 원금의 9.7% 표">
+                                <div class="cert-zoom-bar">🔍 변제율 9.7% 표 확대</div>
+                            </div>
+                        </div>
+                        <div class="cert-img-item" onclick="openModal('5.png')">
+                            <img src="5.png" alt="부산신용보증재단 등 채권자 상세 내역">
+                            <div class="cert-zoom-bar">🔍 부산신용보증재단·소상공인진흥공단 등 상세 내역 확대 보기</div>
+                        </div>
+                    </div>
+                    <div class="cert-summary">
+                        💡 <strong>핵심 결과:</strong> 변제율 원금의 <strong>9.7%</strong> 인가! 이자 100% 면제는 물론, 원금 3억 3,651만 원 중 <strong>3,261만 원만 45개월간 분할 변제</strong>하고 나머지 3억 원 이상을 합법적으로 탕감받았습니다.
                     </div>
                 </div>
-                <h3 class="consult-form-title">내 채무, 얼마나 탕감될까?</h3>
-                <p class="consult-form-sub">담당자가 직접 확인 후 비밀리에 연락드립니다.</p>
-                
-                <form id="consultationForm" action="https://formspree.io/f/xdeerkvn" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="이름" class="form-input" placeholder="성함 (익명 가능)" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="연락처" class="form-input" placeholder="연락처 (010-0000-0000)" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="총채무액" class="form-input" placeholder="대략적인 총 채무액 (예: 8,000만 원)">
-                    </div>
-                    <button type="submit" class="form-submit-btn" id="submitBtn">무료 탕감액 진단 신청하기 →</button>
-                </form>
 
-                <div class="success-message-box" id="successBox">
-                    <h4>✅ 상담 신청이 접수되었습니다!</h4>
-                    <p>남겨주신 내용은 100% 비밀이 보장되며,<br>장혜승 대표변호사 전담팀에서 확인 후 신속히 연락드리겠습니다.</p>
+                <!-- 사례 2 -->
+                <div class="cert-card">
+                    <div class="cert-top">
+                        <span class="cert-tag">실제사례 02 · 부산 사하구 직장인·생활자금 채무</span>
+                        <div class="cert-title">고금리 은행·캐피탈·대부 채무 6,824만 원 → 월 11만 9천 원으로 해결!</div>
+                    </div>
+                    <div class="reduction-banner">
+                        <div class="reduction-text"><del>총 6,824만 원</del> → <strong>월 11만 9천 원</strong></div>
+                        <span class="reduction-badge">원금 89.5% 탕감</span>
+                    </div>
+                    <div class="cert-gallery">
+                        <div class="cert-img-item" onclick="openModal('8.png')">
+                            <img src="8.png" alt="변제율 원금의 10.5% 변제예정액표">
+                            <div class="cert-zoom-bar">🔍 실제 변제예정액표 (월 119,282원 / 변제율 10.5%) 크게 보기</div>
+                        </div>
+                    </div>
+                    <div class="cert-summary">
+                        💡 <strong>핵심 결과:</strong> 매달 쏟아지던 독촉에서 벗어나, <strong>월 119,282원씩 총 715만 원(원금의 10.5%)만 변제</strong>하고 6,100만 원 이상을 감면받아 일상을 되찾으셨습니다.
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <p style="text-align:center; font-size:0.8rem; color:#94a3b8; margin-top:16px;">대표 상담문의 : <strong style="color:#fff;">1533-0560</strong></p>
+        <!-- 4. 당근마켓 공식 인증 연동 & 4단계 시스템 -->
+        <section class="section-wrap bg-ivory">
+            <span class="eyebrow-tag eyebrow-gold">LOCAL TRUST & PROCESS</span>
+            <h2 class="sec-title">당근마켓 최다 수준 실제 후기,<br>부산 시민들이 직접 검증했습니다</h2>
+            <p class="sec-desc">가짜 광고 후기가 아닌, 실제 동네 이웃들이 남긴 당근 비즈니스 프로필을 직접 확인해 보세요.</p>
+
+            <div class="daangn-showcase">
+                <div class="daangn-header-bar">
+                    <span class="daangn-badge-title">🥕 당근마켓 공식 단골 로펌</span>
+                    <span class="daangn-star-pill">⭐ 4.7 (실제후기 91건)</span>
+                </div>
+                <div class="review-bubble">
+                    <h4>"합리적인 금액과 친절함에 바로 결정했습니다"</h4>
+                    <p>"자영업으로 인해 늘어난 빚 때문에 앞이 막막했습니다.. 여러 곳 상담하고 난 후 합리적인 금액과 진심 어린 상담에 바로 결정하게 되었습니다. 법원 바로 앞이라 믿음이 갑니다."</p>
+                </div>
+                <a href="https://www.daangn.com/kr/local-profile/a3ftvdk7pfkj/?referrer=share" target="_blank" rel="noopener noreferrer" class="daangn-link-btn">
+                    🥕 이룸법률사무소 당근마켓 실제 후기 보러가기 →
+                </a>
             </div>
 
-        </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">STEP 01</div>
+                    <div class="step-name">1:1 비밀 무료진단</div>
+                    <div class="step-sub">채무·소득 분석 후 예상 탕감율 및 월 변제금 산출</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">STEP 02</div>
+                    <div class="step-name">서류대행·금지명령</div>
+                    <div class="step-sub">복잡한 서류 원스톱 대행 및 독촉·압류 즉시 중지</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">STEP 03</div>
+                    <div class="step-name">부산법원 밀착보정</div>
+                    <div class="step-sub">부산회생법원 회생위원 성향 맞춘 치밀한 보정 대응</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">STEP 04</div>
+                    <div class="step-name">개시결정·최대탕감</div>
+                    <div class="step-sub">이자 100% 면제 및 원금 최대 90% 이상 감면 인가</div>
+                </div>
+            </div>
+
+            <div class="promise-card-gold">
+                <h3>오직 결과로 증명하는 이룸의 3대 약속</h3>
+                <div class="promise-item-row"><span>🏛️</span><span>1. 부산회생법원·지방법원 관할 정문 앞 밀착 대응</span></div>
+                <div class="promise-item-row"><span>📑</span><span>2. 수천 건 경력의 전담변호사 직접 사건 진행</span></div>
+                <div class="promise-item-row"><span>🤫</span><span>3. 가족·직장·지인 모르게 1:1 철저한 비공개 상담</span></div>
+            </div>
+        </section>
+
+        <!-- 5. 핵심 FAQ -->
+        <section class="section-wrap bg-white">
+            <span class="eyebrow-tag eyebrow-gold">FREQUENTLY ASKED QUESTIONS</span>
+            <h2 class="sec-title">상담 전 가장 많이 묻는 질문</h2>
+            <div class="faq-item">
+                <div class="faq-q">Q. 타 지역 사무실에서 기각되었거나 진행 중인데 다시 상담받을 수 있나요?</div>
+                <div class="faq-a">네, 물론입니다. 타 사무실의 무성의한 대응이나 보정 미흡으로 기각·불인가 위기에 처한 사건도 법원 정문 앞 이룸에서 원인을 정밀 분석하여 재신청 및 인가까지 이끌어낸 다수의 성공 사례가 있습니다.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 가족이나 직장에 정말 비밀로 진행이 가능한가요?</div>
+                <div class="faq-a">네, 100% 가능합니다. 모든 법원 우편물은 법원 정문 앞 저희 이룸법률사무소로 송달받도록 지정하여 자택이나 직장으로 서류가 가지 않도록 철저히 차단합니다.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 지금 당장 추심 전화와 압류가 너무 힘든데 바로 멈추나요?</div>
+                <div class="faq-a">사건 접수와 동시에 법원에 '중지·금지명령'을 신청하여 채권자의 독촉 전화, 방문 추심, 급여 및 통장 압류를 합법적으로 즉시 중단시킵니다.</div>
+            </div>
+        </section>
+
+        <!-- 6. VIP 비밀 상담 신청 폼 (Formspree xdeerkvn 완벽 연동) -->
+        <section class="vip-form-section" id="consultForm">
+            <div class="form-Perks">
+                <div class="perk-box">🛡️ 1:1 맞춤형<br>책임 사건진행</div>
+                <div class="perk-box">📩 복잡한 서류<br>원스톱 대행발급</div>
+                <div class="perk-box">🔒 상담·진행내용<br>100% 비밀보장</div>
+            </div>
+
+            <h2 class="form-title">내 채무, <span>얼마나 탕감</span>될까?</h2>
+            <p class="form-sub">담당자가 직접 확인 후 비밀리에 연락드립니다.</p>
+
+            <form id="consultationForm" action="https://formspree.io/f/xdeerkvn" method="POST">
+                <input type="hidden" name="debt" id="selectedDebtInput" value="5천만~1억 원">
+
+                <div class="field-group">
+                    <label class="field-label">성함 (익명·가명 가능)</label>
+                    <input type="text" name="name" class="field-input" placeholder="성함을 입력해 주세요" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">연락처 (비밀상담 안내용)</label>
+                    <input type="tel" name="phone" class="field-input" placeholder="010-0000-0000" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">대략적인 총 채무액 (터치해서 선택)</label>
+                    <div class="chip-grid">
+                        <div class="select-chip" onclick="selectDebt(this, '3천만~5천만 원')">3천만~5천만 원</div>
+                        <div class="select-chip active" onclick="selectDebt(this, '5천만~1억 원')">5천만~1억 원</div>
+                        <div class="select-chip" onclick="selectDebt(this, '1억~2억 원')">1억~2억 원</div>
+                        <div class="select-chip" onclick="selectDebt(this, '2억 원 이상')">2억 원 이상</div>
+                    </div>
+                </div>
+
+                <div class="consent-wrap">
+                    <label class="consent-check">
+                        <input type="checkbox" required checked>
+                        <span>[필수] 개인정보 수집 및 100% 비밀상담 이용 동의</span>
+                    </label>
+                    <div class="consent-desc">
+                        수집항목: 성함, 연락처, 채무규모 | 수집목적: 개인회생·파산 무료 탕감 진단 안내 | 상담 종료 후 즉시 안전하게 파기됩니다.
+                    </div>
+                </div>
+
+                <button type="submit" class="vip-submit-btn" id="submitBtn">무료 탕감액 진단 신청하기 →</button>
+            </form>
+
+            <div class="done-box" id="successBox">
+                <h4>✅ 상담 신청이 안전하게 접수되었습니다!</h4>
+                <p>남겨주신 내용은 100% 비밀이 보장되며,<br>담당자가 확인 후 신속히 연락드리겠습니다.</p>
+            </div>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="legal-footer">
+            <strong>이룸법률사무소 개인회생·파산센터</strong> | 대표변호사(광고책임변호사): 장혜승<br>
+            소재지: 부산광역시 연제구 법원남로15번길 9, 3층 (거제동, 덕원빌딩 / 부산회생법원 정문 앞)<br>
+            대표 상담문의: <strong>1533-0560</strong><br>
+            ※ 개인회생·파산 인가 여부 및 탕감율은 의뢰인의 소득·재산 등 개별 사안에 따라 법원의 결정으로 달라질 수 있습니다.
+        </footer>
     </div>
 
-    <div class="floating-cta-bar">
-        <a href="tel:1533-0560" class="cta-btn-call">📞 1533-0560 전화상담</a>
-        <a href="#consultForm" class="cta-btn-form">💬 30초 무료진단 신청</a>
+    <!-- 하단 고정 플로팅 바 -->
+    <div class="floating-bar">
+        <a href="tel:1533-0560" class="float-btn-tel">📞 1533-0560 전화상담</a>
+        <a href="#consultForm" class="float-btn-Apply">💬 30초 무료진단 신청</a>
+    </div>
+
+    <!-- 결정문 이미지 확대 모달 -->
+    <div class="img-modal" id="imageModal" onclick="closeModal()">
+        <button class="modal-close-btn" onclick="closeModal()">✕ 닫기</button>
+        <img id="modalImg" src="" alt="부산회생법원 결정문 확대">
     </div>
 
     <script>
-        const items = Array.from(document.querySelectorAll('.scroll-item'));
-        const container = document.getElementById('mobileContainer');
-        const symbol1 = document.getElementById('symbol1');
-        const symbol2 = document.getElementById('symbol2');
-        const symbol3 = document.getElementById('symbol3');
-        const symbol4 = document.getElementById('symbol4');
-        const handshakeBox = document.getElementById('handshakeBox');
-
-        function applyTheme(theme) {
-            container.className = "mobile-container theme-" + theme;
-            symbol1.style.opacity = (theme === 'empathy' || theme === 'default') ? '0.07' : '0.01';
-            
-            if (theme === 'danger') {
-                symbol2.style.opacity = '0.14';
-                symbol2.style.transform = 'scale(1.2) translateY(20px)';
-            } else {
-                symbol2.style.opacity = '0.01';
-                symbol2.style.transform = 'scale(0.8)';
-            }
-
-            symbol3.style.opacity = theme === 'trust' ? '0.09' : '0.01';
-            symbol4.style.opacity = theme === 'conclusion' ? '0.12' : '0.01';
+        function selectDebt(el, val) {
+            document.querySelectorAll('.select-chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('selectedDebtInput').value = val;
         }
-
-        function checkVisibleCards() {
-            const triggerPoint = window.innerHeight * 0.82;
-            let currentActiveTheme = 'empathy';
-
-            items.forEach((el, index) => {
-                const rect = el.getBoundingClientRect();
-                if (index <= 1 || rect.top < triggerPoint) {
-                    el.classList.add('active');
-                    if (el.dataset.theme) {
-                        currentActiveTheme = el.dataset.theme;
-                    }
-                } else {
-                    el.classList.remove('active');
-                }
-            });
-
-            if (handshakeBox) {
-                const boxRect = handshakeBox.getBoundingClientRect();
-                const viewportCenter = window.innerHeight * 0.5;
-                const distFromCenter = (viewportCenter - boxRect.top) * 0.08;
-                const clampedY = Math.max(-18, Math.min(18, distFromCenter));
-                const dynamicScale = 1 + Math.max(0, 0.14 - Math.abs(viewportCenter - boxRect.top) / 2500);
-                handshakeBox.style.transform = `translateY(${clampedY}px) scale(${dynamicScale.toFixed(3)})`;
-            }
-
-            applyTheme(currentActiveTheme);
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').classList.add('open');
         }
-
-        window.addEventListener('scroll', checkVisibleCards, { passive: true });
-        window.addEventListener('touchmove', checkVisibleCards, { passive: true });
-        window.addEventListener('resize', checkVisibleCards, { passive: true });
-        window.addEventListener('load', checkVisibleCards);
-        checkVisibleCards();
-
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('open');
+        }
         const form = document.getElementById('consultationForm');
         const submitBtn = document.getElementById('submitBtn');
         const successBox = document.getElementById('successBox');
-
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 submitBtn.disabled = true;
                 submitBtn.innerText = '안전하게 접수 중입니다...';
-
-                const formData = new FormData(form);
-
-                fetch(form.action, {
+                fetch('https://formspree.io/f/xdeerkvn', {
                     method: 'POST',
-                    body: formData,
+                    body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
-                })
-                .then(response => {
-                    form.style.display = 'none';
-                    successBox.style.display = 'block';
-                })
-                .catch(error => {
-                    form.style.display = 'none';
-                    successBox.style.display = 'block';
+                }).then(res => {
+                    if (res.ok) {
+                        form.style.display = 'none';
+                        successBox.style.display = 'block';
+                    } else {
+                        alert('일시적인 오류가 발생했습니다. 1533-0560으로 전화주시면 즉시 상담 가능합니다.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = '무료 탕감액 진단 신청하기 →';
+                    }
+                }).catch(() => {
+                    alert('네트워크 연결을 확인해 주세요. 1533-0560으로 전화주시면 즉시 상담 가능합니다.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = '무료 탕감액 진단 신청하기 →';
                 });
             });
         }
