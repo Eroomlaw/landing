@@ -62,6 +62,7 @@
             width: 100%;
             scroll-behavior: smooth;
         }
+        .nowrap { white-space: nowrap; display: inline-block; }
         .mobile-container {
             width: 100%;
             max-width: 480px;
@@ -101,6 +102,7 @@
             color: #ffffff; font-size: 0.85rem; font-weight: 900;
             padding: 10px 16px; border-radius: 99px; text-decoration: none;
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+            white-space: nowrap;
         }
 
         /* 1. 히어로 섹션 */
@@ -127,9 +129,11 @@
             font-size: 0.95rem; font-weight: 800; padding: 12px 14px;
             border-radius: 12px; margin-bottom: 18px; line-height: 1.5; word-break: keep-all;
         }
+        /* 문단 끊김 방지를 위해 강제 줄바꿈 없이 자연스러운 문단 흐름 적용 */
         .hero-lead {
-            font-size: 1.05rem; line-height: 1.6; color: var(--text-muted);
+            font-size: 1.02rem; line-height: 1.65; color: var(--text-muted);
             word-break: keep-all; margin-bottom: 24px; font-weight: 600;
+            letter-spacing: -0.3px;
         }
 
         /* 대표변호사 대형 카드 */
@@ -177,11 +181,11 @@
         .eyebrow-rose { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
         
         .sec-title {
-            font-size: 1.6rem; font-weight: 900; line-height: 1.45;
+            font-size: 1.55rem; font-weight: 900; line-height: 1.45;
             letter-spacing: -0.6px; margin-bottom: 14px; word-break: keep-all;
         }
         .sec-desc {
-            font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); font-weight: 600;
+            font-size: 1.02rem; line-height: 1.6; color: var(--text-muted); font-weight: 600;
             margin-bottom: 26px; word-break: keep-all;
         }
         .sec-desc.light { color: #cbd5e1; }
@@ -225,14 +229,47 @@
             background: #13254e; border-radius: 20px; overflow: hidden;
             border: 1px solid rgba(245, 158, 11, 0.45); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
         }
-        .cert-top { background: linear-gradient(90deg, #0b1932 0%, #13254e 100%); padding: 20px; border-bottom: 1px solid rgba(245, 158, 11, 0.25); }
-        .cert-tag { display: inline-block; background: var(--gold-400); color: #0b1932; font-size: 0.85rem; font-weight: 900; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
-        .cert-title { font-size: 1.2rem; font-weight: 900; color: #ffffff; line-height: 1.45; word-break: keep-all; }
-        .reduction-banner { background: rgba(239, 68, 68, 0.15); border-bottom: 1px solid rgba(248, 113, 113, 0.3); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .reduction-text { font-size: 1rem; color: #f8fafc; font-weight: 700; }
-        .reduction-text del { color: #94a3b8; margin-right: 6px; }
-        .reduction-text strong { color: #fde047; font-size: 1.25rem; font-weight: 900; }
-        .reduction-badge { background: #dc2626; color: #ffffff; font-size: 0.95rem; font-weight: 900; padding: 6px 12px; border-radius: 8px; white-space: nowrap; }
+        .cert-top { background: linear-gradient(90deg, #0b1932 0%, #13254e 100%); padding: 20px 18px; border-bottom: 1px solid rgba(245, 158, 11, 0.25); }
+        .cert-tag { display: inline-block; background: var(--gold-400); color: #0b1932; font-size: 0.82rem; font-weight: 900; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+        
+        /* 카드 상단 제목: 변경 전 금액(상단 1줄) / 변경 후 금액(하단 1줄) 분리로 금액 끊김 완벽 방지 */
+        .cert-title {
+            font-size: 1.15rem; font-weight: 900; color: #ffffff;
+            line-height: 1.45; word-break: keep-all; letter-spacing: -0.4px;
+        }
+        .cert-title .title-line-before {
+            display: block; color: #e2e8f0; font-size: 1.05rem; font-weight: 800; white-space: nowrap;
+        }
+        .cert-title .title-line-after {
+            display: block; color: var(--gold-300); font-size: 1.22rem; font-weight: 900; margin-top: 3px; white-space: nowrap;
+        }
+
+        /* 탕감 배너: 상단 변경 전 금액 1줄 + 하단 변경 후 금액 1줄 구조 */
+        .reduction-banner {
+            background: rgba(239, 68, 68, 0.15); border-bottom: 1px solid rgba(248, 113, 113, 0.3);
+            padding: 15px 18px; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        }
+        .reduction-text {
+            display: flex; flex-direction: column; gap: 4px; line-height: 1.3;
+        }
+        .reduction-text .before-line {
+            font-size: 0.95rem; color: #94a3b8; font-weight: 700; white-space: nowrap;
+        }
+        .reduction-text .before-line del {
+            color: #94a3b8;
+        }
+        .reduction-text .after-line {
+            font-size: 1.15rem; color: #f8fafc; font-weight: 800; white-space: nowrap;
+        }
+        .reduction-text .after-line strong {
+            color: #fde047; font-size: 1.3rem; font-weight: 900; letter-spacing: -0.3px;
+        }
+        .reduction-badge {
+            background: #dc2626; color: #ffffff; font-size: 0.95rem; font-weight: 900;
+            padding: 8px 14px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+        }
+
         .cert-gallery { padding: 16px; background: #0b1932; }
         .cert-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
         .cert-img-item { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.5); cursor: pointer; }
@@ -261,7 +298,7 @@
             font-size: 0.9rem; font-weight: 900; color: #ea580c; display: flex; align-items: center; gap: 6px;
         }
         .daangn-score {
-            font-size: 0.85rem; font-weight: 800; color: #9a3412; background: #ffedd5; padding: 4px 10px; border-radius: 99px;
+            font-size: 0.85rem; font-weight: 800; color: #9a3412; background: #ffedd5; padding: 4px 10px; border-radius: 99px; white-space: nowrap;
         }
         .daangn-card {
             background: #ffffff; border-radius: 12px; padding: 14px 16px;
@@ -322,10 +359,25 @@
         .legal-footer { background: #04070f; color: #64748b; padding: 28px 20px 36px; font-size: 0.85rem; line-height: 1.7; }
         .legal-footer strong { color: #94a3b8; }
 
-        /* 하단 고정 플로팅 바 */
-        .floating-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(11, 25, 50, 0.96); backdrop-filter: blur(12px); padding: 12px 16px 20px; z-index: 100; border-top: 1px solid rgba(245, 158, 11, 0.4); display: flex; gap: 12px; }
-        .float-btn-tel { flex: 1; background: #1e293b; color: #ffffff; text-decoration: none; padding: 16px 10px; border-radius: 12px; font-weight: 800; font-size: 1rem; text-align: center; border: 1px solid rgba(255,255,255,0.15); }
-        .float-btn-Apply { flex: 1.25; background: linear-gradient(90deg, var(--gold-400) 0%, var(--gold-600) 100%); color: #ffffff; text-decoration: none; padding: 16px 10px; border-radius: 12px; font-weight: 900; font-size: 1.05rem; text-align: center; }
+        /* 하단 고정 플로팅 바: 모바일 줄바꿈 방지를 위해 nowrap 및 플렉스 정렬 적용 */
+        .floating-bar {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 480px; background: rgba(11, 25, 50, 0.96);
+            backdrop-filter: blur(12px); padding: 12px 14px 18px; z-index: 100;
+            border-top: 1px solid rgba(245, 158, 11, 0.4); display: flex; gap: 10px;
+        }
+        .float-btn-tel {
+            flex: 1; background: #1e293b; color: #ffffff; text-decoration: none;
+            padding: 15px 8px; border-radius: 12px; font-weight: 800; font-size: 0.95rem;
+            text-align: center; border: 1px solid rgba(255,255,255,0.15);
+            white-space: nowrap; display: flex; align-items: center; justify-content: center;
+        }
+        .float-btn-Apply {
+            flex: 1.2; background: linear-gradient(90deg, var(--gold-400) 0%, var(--gold-600) 100%);
+            color: #ffffff; text-decoration: none; padding: 15px 8px;
+            border-radius: 12px; font-weight: 900; font-size: 0.98rem; text-align: center;
+            white-space: nowrap; display: flex; align-items: center; justify-content: center;
+        }
 
         /* 모달 */
         .img-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
@@ -362,10 +414,9 @@
             <div class="hero-alert-bar">
                 🚨 어차피 서류만 대충 접수해 주는<br>공장형 로펌에 비싼 돈 내지 마세요!
             </div>
+            <!-- 강제 줄바꿈(<br>)을 제거해 모바일 화면 폭에 맞춰 문단이 끊김 없이 자연스럽게 이어지도록 개선 -->
             <p class="hero-lead">
-                지역마다 법원의 회생위원 성향과 보정 기준이 전혀 다릅니다.<br>
-                <strong style="color:var(--navy-800);">부산회생법원 사정을 가장 잘 아는 정문 앞 지역 밀착 로펌</strong>에서<br>
-                이자는 100%, 원금은 최대 90% 이상 감면받으세요.
+                지역마다 법원의 회생위원 성향과 보정 기준이 전혀 다릅니다. <strong style="color:var(--navy-800);">부산회생법원 사정을 가장 잘 아는 정문 앞 지역 밀착 로펌</strong>에서 이자는 100%, 원금은 최대 90% 이상 감면받으세요.
             </p>
 
             <!-- 대표변호사 대형 카드 -->
@@ -428,7 +479,7 @@
             </p>
 
             <div class="guarantee-box-wrap">
-                <!-- 비용 혜택 강조 (중복 박스 제거로 핵심 혜택에 시선 집중) -->
+                <!-- 비용 혜택 강조 -->
                 <div class="guarantee-box cost">
                     <div class="g-head">
                         <span class="g-icon">💳</span>
@@ -462,7 +513,7 @@
         <!-- 4. 실제 법원 결정문 & 90% 탕감 실물 증명 -->
         <section class="section-wrap bg-navy">
             <span class="eyebrow-tag eyebrow-gold-dark">VERIFIED COURT RECORDS</span>
-            <h2 class="sec-title" style="color:#ffffff;">말뿐인 홍보가 아닙니다.<br><span style="color:var(--gold-300);">부산회생법원 실제 결정문</span>으로 증명합니다</h2>
+            <h2 class="sec-title" style="color:#ffffff;">말뿐인 홍보가 아닙니다.<br><span style="color:var(--gold-300);">부산회생법원 실제 결정문</span>으로<br>확실하게 증명합니다</h2>
             <p class="sec-desc light">
                 이룸법률사무소(대리인 변호사 장혜승)에서 실제로 인가받은 정본 결정문과 변제예정액표입니다. 이미지를 터치하면 확대됩니다.
             </p>
@@ -472,10 +523,16 @@
                 <div class="cert-card">
                     <div class="cert-top">
                         <span class="cert-tag">실제사례 01 · 부산 수영구 자영업·소상공인 채무</span>
-                        <div class="cert-title">대출 채무 3억 3,651만 원 → 3억 390만 원 탕감!</div>
+                        <div class="cert-title">
+                            <span class="title-line-before">대출 채무 3억 3,651만 원</span>
+                            <span class="title-line-after">→ 3억 390만 원 탕감!</span>
+                        </div>
                     </div>
                     <div class="reduction-banner">
-                        <div class="reduction-text"><del>총 3억 3,651만 원</del> → <strong>월 72만 원</strong></div>
+                        <div class="reduction-text">
+                            <div class="before-line"><del>총 3억 3,651만 원</del></div>
+                            <div class="after-line">→ <strong>월 72만 원</strong></div>
+                        </div>
                         <span class="reduction-badge">원금 90.3% 탕감</span>
                     </div>
                     <div class="cert-gallery">
@@ -503,10 +560,16 @@
                 <div class="cert-card">
                     <div class="cert-top">
                         <span class="cert-tag">실제사례 02 · 부산 사하구 직장인·생활자금 채무</span>
-                        <div class="cert-title">고금리 캐피탈·대부 채무 6,824만 원 → 월 11만 9천 원 해결!</div>
+                        <div class="cert-title">
+                            <span class="title-line-before">고금리 캐피탈·대부 채무 6,824만 원</span>
+                            <span class="title-line-after">→ 월 11만 9천 원 해결!</span>
+                        </div>
                     </div>
                     <div class="reduction-banner">
-                        <div class="reduction-text"><del>총 6,824만 원</del> → <strong>월 11만 9천 원</strong></div>
+                        <div class="reduction-text">
+                            <div class="before-line"><del>총 6,824만 원</del></div>
+                            <div class="after-line">→ <strong>월 11만 9천 원</strong></div>
+                        </div>
                         <span class="reduction-badge">원금 89.5% 탕감</span>
                     </div>
                     <div class="cert-gallery">
