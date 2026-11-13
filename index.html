@@ -56,7 +56,7 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         html, body {
-            background-color: #cbd5e1;
+            background-color: #050914;
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
             color: var(--text-main);
             overflow-x: hidden;
@@ -69,8 +69,7 @@
             margin: 0 auto;
             background: #ffffff;
             min-height: 100vh;
-            box-shadow: 0 0 50px rgba(15, 23, 42, 0.18);
-            padding-bottom: 92px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);
             position: relative;
         }
 
@@ -401,22 +400,14 @@
         .faq-q span { color: var(--blue-700); margin-right: 4px; }
         .faq-a { font-size: 0.93rem; color: var(--text-sub); line-height: 1.58; word-break: keep-all; font-weight: 600; }
 
-        /* 6. 찾아오시는 길 (map_info.png 연동 섹션) */
+        /* 6. 찾아오시는 길 (약도 이미지 단독 배치) */
         .map-card-box {
             background: #ffffff; border-radius: 18px; padding: 10px;
             border: 1px solid var(--border-light);
             box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-            margin-bottom: 16px; overflow: hidden;
+            overflow: hidden;
         }
         .map-card-box img { width: 100%; height: auto; display: block; border-radius: 12px; }
-        .map-btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .map-nav-btn {
-            padding: 15px 10px; border-radius: 12px; font-weight: 900;
-            font-size: 0.94rem; text-decoration: none; text-align: center;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-        }
-        .map-nav-kakao { background: #fee500; color: #191919; }
-        .map-nav-naver { background: #03c75a; color: #ffffff; }
 
         /* 7. [감성 터치 손글씨 편지 섹션] */
         .letter-section {
@@ -440,9 +431,7 @@
         .letter-highlight {
             background: rgba(245, 158, 11, 0.22); padding: 2px 6px; font-weight: 700; border-radius: 4px;
         }
-        .letter-strong-blue {
-            color: var(--blue-700); font-weight: 700;
-        }
+        .letter-strong-blue { color: var(--blue-700); font-weight: 700; }
         .letter-signature {
             text-align: right; margin-top: 28px; font-weight: 700;
             font-size: 1.15rem; color: var(--navy-900); line-height: 1.45;
@@ -462,12 +451,12 @@
             font-size: 0.82rem; font-weight: 800; color: var(--amber-100); line-height: 1.4;
         }
         .form-title {
-            text-align: center; font-size: 1.62rem; font-weight: 900;
+            text-align: center; font-size: 1.58rem; font-weight: 900;
             margin-bottom: 10px; line-height: 1.38; word-break: keep-all;
         }
         .form-title span { color: var(--amber-400); }
         .form-sub {
-            text-align: center; font-size: 0.96rem; color: #cbd5e1;
+            text-align: center; font-size: 0.95rem; color: #cbd5e1;
             margin-bottom: 26px; line-height: 1.55; font-weight: 600; word-break: keep-all;
         }
         .field-group { margin-bottom: 20px; }
@@ -512,9 +501,9 @@
         .consent-check input { width: 18px; height: 18px; accent-color: var(--amber-500); }
         .consent-desc { font-size: 0.78rem; color: #94a3b8; margin-top: 6px; line-height: 1.5; }
         .submit-btn {
-            width: 100%; padding: 19px; border-radius: 14px; border: none;
+            width: 100%; padding: 19px 14px; border-radius: 14px; border: none;
             background: linear-gradient(90deg, var(--amber-400) 0%, var(--amber-500) 100%);
-            color: var(--navy-950); font-size: 1.15rem; font-weight: 900;
+            color: var(--navy-950); font-size: 1.12rem; font-weight: 900;
             cursor: pointer; box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
         }
         .manager-notice {
@@ -529,44 +518,55 @@
         .done-box h4 { color: #34d399; font-size: 1.22rem; font-weight: 900; margin-bottom: 10px; }
         .done-box p { color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; }
 
+        /* 푸터 */
         .legal-footer {
             background: #050914; color: #64748b;
-            padding: 26px 20px 34px; font-size: 0.82rem; line-height: 1.7;
+            padding: 28px 20px 110px; font-size: 0.82rem; line-height: 1.7;
         }
         .legal-footer strong { color: #94a3b8; }
 
         /* 하단 고정 플로팅 바 */
         .floating-bar {
             position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 100%; max-width: 480px; background: rgba(10, 17, 34, 0.96);
+            width: 100%; max-width: 480px; background: rgba(10, 17, 34, 0.98);
             backdrop-filter: blur(12px); padding: 12px 14px 16px; z-index: 100;
             border-top: 1px solid rgba(251, 191, 36, 0.35); display: flex; gap: 10px;
         }
         .float-btn-tel {
             flex: 1; background: #1e293b; color: #ffffff; text-decoration: none;
-            padding: 15px 8px; border-radius: 12px; font-weight: 800; font-size: 0.94rem;
+            padding: 15px 6px; border-radius: 12px; font-weight: 800; font-size: 0.92rem;
             text-align: center; border: 1px solid rgba(255, 255, 255, 0.15);
             white-space: nowrap; display: flex; align-items: center; justify-content: center;
         }
         .float-btn-apply {
-            flex: 1.25; background: linear-gradient(90deg, var(--amber-400) 0%, var(--amber-500) 100%);
-            color: var(--navy-950); text-decoration: none; padding: 15px 8px;
-            border-radius: 12px; font-weight: 900; font-size: 0.96rem; text-align: center;
+            flex: 1.15; background: linear-gradient(90deg, var(--amber-400) 0%, var(--amber-500) 100%);
+            color: var(--navy-950); text-decoration: none; padding: 15px 6px;
+            border-radius: 12px; font-weight: 900; font-size: 0.95rem; text-align: center;
             white-space: nowrap; display: flex; align-items: center; justify-content: center;
         }
 
-        /* 원본 전체 보기 모달 */
+        /* 인스타 이탈 방지형 원본 전체 보기 모달 */
         .img-modal {
-            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.92);
-            z-index: 999; justify-content: center; align-items: center; padding: 16px;
+            display: none; position: fixed; inset: 0; background: rgba(5, 9, 20, 0.94);
+            z-index: 999; flex-direction: column; justify-content: center; align-items: center;
+            padding: 16px 16px 24px;
         }
         .img-modal.open { display: flex; }
-        .img-modal img { max-width: 100%; max-height: 86vh; border-radius: 10px; background: #ffffff; }
-        .modal-close-btn {
-            position: absolute; top: 18px; right: 18px;
+        .modal-guide-top {
+            color: #cbd5e1; font-size: 0.85rem; font-weight: 700;
+            margin-bottom: 10px; text-align: center;
+        }
+        .img-modal img {
+            max-width: 100%; max-height: 74vh; border-radius: 10px;
+            background: #ffffff; object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .modal-close-bottom-btn {
+            margin-top: 16px; width: 100%; max-width: 320px;
             background: var(--amber-400); color: var(--navy-950);
-            border: none; border-radius: 99px; padding: 10px 18px;
-            font-size: 0.92rem; font-weight: 900; cursor: pointer;
+            border: none; border-radius: 14px; padding: 15px 20px;
+            font-size: 1rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.35);
         }
     </style>
 </head>
@@ -671,14 +671,13 @@
                 기계적으로 서류만 접수해 주고 나 몰라라 하는 공장형 로펌의 <strong>거품 낀 바가지 수임료에 절대 피해 보지 마십시오.</strong>
             </p>
 
-            <!-- 요청하신 핵심 논리 강조 박스 -->
             <div class="core-logic-banner">
                 <div class="logic-quote">
                     "단순히 서류만 대신 접수해주는 곳은 비쌀 이유가 없습니다.<br>
                     <span>끝까지 함께 발로 뛰고 책임져주는 곳</span>을 선택하셔야 합니다."
                 </div>
                 <p>
-                     그래서 가장 합리적인 정답은 <strong>부산회생법원 정문 1분 거리에서 대표변호사가 직접 발로 뛰는 이룸법률사무소</strong>입니다.
+                    그래서 가장 합리적인 정답은 <strong>부산회생법원 정문 1분 거리에서 대표변호사가 직접 발로 뛰는 이룸법률사무소</strong>입니다.
                 </p>
             </div>
 
@@ -719,7 +718,7 @@
                 확실하게 증명합니다
             </h2>
             <p class="sec-desc light">
-                이룸법률사무소(대리인 변호사 장혜승)에서 실제로 인가받은 정본 결정문과 변제예정액표입니다. 모바일에서도 잘 보이도록 핵심 부분을 확대했으며, 터치하면 원본 전체가 열립니다.
+                이룸법률사무소(대리인 변호사 장혜승)에서 실제로 인가받은 정본 결정문과 변제예정액표입니다. 모바일에서도 잘 보이도록 핵심 부분을 확대했으며, 이미지를 터치하면 원본 전체를 보실 수 있습니다.
             </p>
 
             <div class="case-stack">
@@ -745,7 +744,7 @@
                             <div class="doc-viewport crop-doc-4">
                                 <img src="4.png" alt="부산회생법원 개시결정문 정본">
                             </div>
-                            <div class="cert-zoom-bar">🔍 터치하면 <span>개시결정문 정본 전체</span>가 확대됩니다</div>
+                            <div class="cert-zoom-bar">🔍 터치하면 <span>개시결정문 전체</span>를 볼 수 있습니다</div>
                         </div>
 
                         <div class="doc-zoom-card" onclick="openModal('6.png')">
@@ -756,18 +755,18 @@
                             <div class="doc-viewport crop-doc-6">
                                 <img src="6.png" alt="변제율 원금의 9.7% 표">
                             </div>
-                            <div class="cert-zoom-bar">🔍 터치하면 <span>변제율 9.7% 산정표 전체</span>가 확대됩니다</div>
+                            <div class="cert-zoom-bar">🔍 터치하면 <span>변제율 9.7% 산정표 전체</span>를 볼 수 있습니다</div>
                         </div>
 
                         <div class="doc-zoom-card" onclick="openModal('5.png')">
                             <div class="doc-pinpoint-header">
-                                <span>📌 확인 3 : 45개월 단축 · 채권자별 상세 내역</span>
+                                <span>📌 확인 3 : 45개월 단축 · 월 72만 원 변제</span>
                                 <span class="highlight-pill">기간 단축</span>
                             </div>
                             <div class="doc-viewport crop-doc-5">
                                 <img src="5.png" alt="부산신용보증재단 등 채권자 상세 내역">
                             </div>
-                            <div class="cert-zoom-bar">🔍 터치하면 <span>채권자 상세 내역 전체</span>가 확대됩니다</div>
+                            <div class="cert-zoom-bar">🔍 터치하면 <span>채권자 상세 내역 전체</span>를 볼 수 있습니다</div>
                         </div>
                     </div>
 
@@ -798,7 +797,7 @@
                             <div class="doc-viewport crop-doc-8">
                                 <img src="8.png" alt="변제율 원금의 10.5% 변제예정액표">
                             </div>
-                            <div class="cert-zoom-bar">🔍 터치하면 <span>변제예정액표 전체 원본</span>이 확대됩니다</div>
+                            <div class="cert-zoom-bar">🔍 터치하면 <span>변제예정액표 전체 원본</span>을 볼 수 있습니다</div>
                         </div>
                     </div>
 
@@ -870,7 +869,7 @@
             </div>
         </section>
 
-        <!-- 6. 찾아오시는 길 (map_info.png 연동) -->
+        <!-- 6. 찾아오시는 길 (약도 이미지만 깔끔하게 노출) -->
         <section class="section-wrap bg-soft">
             <span class="kor-tag tag-blue">찾아오시는 길</span>
             <h2 class="sec-title">
@@ -884,18 +883,9 @@
             <div class="map-card-box">
                 <img src="map_info.png" alt="이룸법률사무소 찾아오시는 길 약도">
             </div>
-
-            <div class="map-btn-grid">
-                <a href="https://map.kakao.com/link/search/부산광역시 연제구 법원남로15번길 9" target="_blank" class="map-nav-btn map-nav-kakao">
-                    📍 카카오맵 길찾기
-                </a>
-                <a href="https://map.naver.com/p/search/부산광역시 연제구 법원남로15번길 9" target="_blank" class="map-nav-btn map-nav-naver">
-                    📍 네이버 지도 길찾기
-                </a>
-            </div>
         </section>
 
-        <!-- 7. [감성 터치 손글씨 편지] 서류 대행 비판 + 끝까지 발로 뛰는 이룸 + 희망찬 재기 -->
+        <!-- 7. [감성 터치 손글씨 편지] -->
         <section class="letter-section">
             <div class="letter-paper">
                 <div class="letter-title">
@@ -913,7 +903,7 @@
             </div>
         </section>
 
-        <!-- 8. [마지막 액션 요구] 희망찬 재기 1:1 비밀 무료 진단 신청 폼 -->
+        <!-- 8. [마지막 액션 요구] 1:1 비밀 무료 진단 신청 폼 -->
         <section class="consult-form-section" id="consultForm">
             <div class="form-perks">
                 <div class="perk-box">⚡ 3분 통화로<br>예상변제금 안내</div>
@@ -921,8 +911,8 @@
                 <div class="perk-box">🔒 가족·직장<br>100% 비밀보장</div>
             </div>
 
-            <h2 class="form-title">우리 같이, <span>다시 일어서봅시다</span></h2>
-            <p class="form-sub">끝까지 함께 발로 뛰는 이룸이 곁에 있습니다.<br>아래 항목을 선택해 주시면 내 채무가 얼마나 감면될지 비밀리에 진단해 드립니다.</p>
+            <h2 class="form-title">내 채무, <span>얼마나 탕감</span>될까?<br><span style="font-size:1.25rem; color:#ffffff;">우리 같이 다시 일어서봅시다</span></h2>
+            <p class="form-sub">끝까지 함께 발로 뛰는 이룸이 곁에 있습니다.<br>아래 항목을 선택해 주시면 예상 감면액을 비밀리에 진단해 드립니다.</p>
 
             <form id="consultationForm" action="https://formspree.io/f/xdeerkvn" method="POST">
                 <input type="hidden" name="debt" id="selectedDebtInput" value="5천만~1억 원">
@@ -941,8 +931,8 @@
                 <div class="field-group">
                     <label class="field-label"><span class="step-pill">2단계</span> 편하신 안내 방식 선택</label>
                     <div class="chip-grid">
-                        <div class="method-chip active" onclick="selectMethod(this, '3분 전화 진단 요청')">📞 3분 전화 진단<br><span style="font-size:0.78rem; font-weight:600;">(예상 변제금 즉시 확인)</span></div>
-                        <div class="method-chip" onclick="selectMethod(this, '문자·카톡 먼저 안내 요청')">💬 문자·카톡 먼저 안내<br><span style="font-size:0.78rem; font-weight:600;">(통화가 부담스러울 때)</span></div>
+                        <div class="method-chip active" id="methodCallChip" onclick="selectMethod(this, '3분 전화 진단 요청')">📞 3분 전화 진단<br><span style="font-size:0.78rem; font-weight:600;">(예상 변제금 즉시 확인)</span></div>
+                        <div class="method-chip" id="methodSmsChip" onclick="selectMethod(this, '문자·카톡 먼저 안내 요청')">💬 문자·카톡 먼저 안내<br><span style="font-size:0.78rem; font-weight:600;">(통화가 부담스러울 때)</span></div>
                     </div>
                 </div>
 
@@ -966,7 +956,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">우리 같이 다시 일어서기 (30초 무료진단) →</button>
+                <button type="submit" class="submit-btn" id="submitBtn">무료 탕감액·변제금 진단 신청하기 →</button>
                 <div class="manager-notice">🔒 전담 담당자가 확인 후 100% 비밀리에 연락드립니다.</div>
             </form>
 
@@ -988,13 +978,14 @@
     <!-- 하단 고정 플로팅 바 -->
     <div class="floating-bar">
         <a href="tel:1533-0560" class="float-btn-tel" onclick="trackCall()">📞 1533-0560 전화상담</a>
-        <a href="#consultForm" class="float-btn-apply">🤝 우리 같이 다시 일어서기 (무료진단)</a>
+        <a href="#consultForm" class="float-btn-apply">💬 30초 무료진단 신청</a>
     </div>
 
-    <!-- 결정문 이미지 확대 모달 -->
+    <!-- 인스타 뒤로가기 이탈 방지형 이미지 확대 모달 -->
     <div class="img-modal" id="imageModal" onclick="closeModal()">
-        <button class="modal-close-btn" onclick="closeModal()">✕ 닫기</button>
-        <img id="modalImg" src="" alt="부산회생법원 결정문 확대">
+        <div class="modal-guide-top">💡 화면 아무 곳이나 터치하면 본문으로 돌아갑니다</div>
+        <img id="modalImg" src="" alt="부산회생법원 결정문 확대" onclick="event.stopPropagation()">
+        <button type="button" class="modal-close-bottom-btn" onclick="closeModal()">✕ 사진 닫기 (본문으로 돌아가기)</button>
     </div>
 
     <script>
@@ -1023,13 +1014,36 @@
                 fbq('track', 'Contact');
             }
         }
+
+        // 사진 확대 시 스마트폰 '뒤로가기(<)' 버튼을 눌러도 인스타로 튕기지 않게 방어
+        let isModalOpen = false;
         function openModal(src) {
             document.getElementById('modalImg').src = src;
             document.getElementById('imageModal').classList.add('open');
+            if (!isModalOpen) {
+                history.pushState({ modal: true }, '');
+                isModalOpen = true;
+            }
         }
         function closeModal() {
-            document.getElementById('imageModal').classList.remove('open');
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('open')) return;
+            modal.classList.remove('open');
+            if (isModalOpen) {
+                isModalOpen = false;
+                if (history.state && history.state.modal) {
+                    history.back();
+                }
+            }
         }
+        window.addEventListener('popstate', function() {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('open')) {
+                modal.classList.remove('open');
+                isModalOpen = false;
+            }
+        });
+
         const form = document.getElementById('consultationForm');
         const submitBtn = document.getElementById('submitBtn');
         const successBox = document.getElementById('successBox');
@@ -1060,12 +1074,12 @@
                     } else {
                         alert('일시적인 오류가 발생했습니다. 1533-0560으로 전화주시면 즉시 상담 가능합니다.');
                         submitBtn.disabled = false;
-                        submitBtn.innerText = '우리 같이 다시 일어서기 (30초 무료진단) →';
+                        submitBtn.innerText = '무료 탕감액·변제금 진단 신청하기 →';
                     }
                 }).catch(() => {
                     alert('네트워크 연결을 확인해 주세요. 1533-0560으로 전화주시면 즉시 상담 가능합니다.');
                     submitBtn.disabled = false;
-                    submitBtn.innerText = '우리 같이 다시 일어서기 (30초 무료진단) →';
+                    submitBtn.innerText = '무료 탕감액·변제금 진단 신청하기 →';
                 });
             });
         }
