@@ -141,7 +141,7 @@
             white-space: nowrap;
         }
 
-        /* 공통 섹션 타이틀 스타일 (여백 확대 & 심플화) */
+        /* 공통 섹션 타이틀 스타일 */
         .sec-badge {
             display: inline-flex;
             align-items: center;
@@ -408,7 +408,6 @@
             white-space: nowrap;
         }
 
-        /* 월 납부액 박스: 불필요한 수식어 제거 후 단문 구성 */
         .monthly-highlight-banner {
             background: linear-gradient(135deg, #065f46 0%, #047857 100%);
             border: 1px solid rgba(52, 211, 153, 0.35);
@@ -436,7 +435,6 @@
             white-space: nowrap;
         }
 
-        /* 결정문 사진 더보기 버튼 */
         .photo-more-toggle-btn {
             width: 100%;
             background: #1e293b;
@@ -466,7 +464,6 @@
             border-color: var(--amber-400);
         }
 
-        /* 더보기 클릭 시 열리는 영역: 빨간 박스(SVG 크롭) 삭제 & 3종 원본 심플 구성 */
         .doc-photo-drawer {
             display: none;
             margin-top: 14px;
@@ -518,7 +515,6 @@
             font-weight: 800;
         }
 
-        /* 개시결정문 원본, 변제표 1쪽, 변제표 2쪽 3단 심플 구성 */
         .simple-doc-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -567,7 +563,7 @@
         }
 
         /* =================================================================
-           3. 부산회생법원 회생위원의 실제 탄식 & 법원 출석 경고 (시각적 강조)
+           3. 부산회생법원 회생위원의 실제 탄식 & 법원 출석 경고
            ================================================================= */
         .twist-dark-section {
             background: var(--navy-950);
@@ -597,7 +593,6 @@
             color: var(--amber-400);
         }
 
-        /* 실제 부산회생법원 회생위원 탄식 하이라이트 카드 (가장 눈에 띄게 배치) */
         .commissioner-spotlight-card {
             background: linear-gradient(145deg, #1e1b2e 0%, #172554 100%);
             border: 2px solid var(--amber-400);
@@ -696,7 +691,7 @@
         }
 
         /* =================================================================
-           4. 1~4단계 진행 과정 섹션 (O, X 옆 중복 태그 삭제 & 심플화)
+           4. 1~4단계 진행 과정 섹션
            ================================================================= */
         .interactive-process-section {
             background: #f8fafc;
@@ -766,7 +761,6 @@
         .comp-good-zone {
             background: #ecfdf5;
         }
-        /* O, X 옆 추가 설명 태그 없이 깔끔한 단일 헤드라인 */
         .comp-zone-head {
             font-size: 0.86rem;
             font-weight: 900;
@@ -839,7 +833,7 @@
         }
 
         /* =================================================================
-           5. [신규 삽입] 의뢰인이 보내온 진심의 감사 편지 (공감 리뷰 섹션)
+           5. 의뢰인이 보내온 진심의 감사 편지 (공감 리뷰 섹션)
            ================================================================= */
         .client-review-letter-section {
             background: linear-gradient(180deg, #f8fafc 0%, var(--paper-bg) 100%);
@@ -899,7 +893,7 @@
         }
 
         /* =================================================================
-           6. 오시는 길 & 전담 변호사 (약도 상단 중복 배지 삭제 & 심플화)
+           6. 오시는 길 & 전담 변호사
            ================================================================= */
         .location-dedicated-section {
             background: #ffffff;
@@ -952,11 +946,11 @@
         }
 
         /* =================================================================
-           7. 채무액 슬라이더 & 무료 진단 신청 폼 (심플화 & 줄바꿈 방지)
+           7. 채무액 슬라이더 & 무료 진단 신청 폼 (박스 확대 & 상하 2단 분리)
            ================================================================= */
         .gentle-form-section {
             background: var(--paper-bg);
-            padding: 38px 20px 44px;
+            padding: 38px 14px 44px;
         }
         .gf-badge-wrap {
             text-align: center;
@@ -988,22 +982,23 @@
             background: #ffffff;
             border: 1.5px solid var(--navy-900);
             border-radius: 18px;
-            padding: 22px 16px;
+            padding: 24px 16px;
             box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
         }
 
+        /* 채무액 선택 위젯 박스 확대 */
         .debt-slider-widget {
             background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 14px;
-            padding: 18px 15px;
-            margin-bottom: 20px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 22px 16px;
+            margin-bottom: 22px;
         }
         .dsw-header-stack {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 14px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
         .dsw-title-row {
             display: flex;
@@ -1012,46 +1007,50 @@
             gap: 6px;
         }
         .dsw-label {
-            font-size: 0.9rem;
+            font-size: 0.94rem;
             font-weight: 900;
             color: var(--navy-900);
             white-space: nowrap;
         }
         .dsw-swipe-guide {
-            font-size: 0.72rem;
+            font-size: 0.73rem;
             font-weight: 800;
             color: var(--red-600);
             background: var(--red-50);
             border: 1px solid #fecaca;
-            padding: 3px 9px;
+            padding: 4px 10px;
             border-radius: 99px;
             white-space: nowrap;
         }
+
+        /* 선택한 채무액 표시 박스 확대 및 넘침 방지 */
         .dsw-amount-showcase {
             width: 100%;
             background: #ffffff;
-            border: 1.5px solid var(--navy-900);
-            border-radius: 10px;
-            padding: 12px 15px;
+            border: 2px solid var(--navy-900);
+            border-radius: 12px;
+            padding: 16px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .dsw-amount-caption {
-            font-size: 0.82rem;
+            font-size: 0.86rem;
             font-weight: 800;
             color: #475569;
             white-space: nowrap;
+            flex-shrink: 0;
         }
         .dsw-current-debt {
-            font-size: 1.3rem;
+            font-size: clamp(1.2rem, 5vw, 1.42rem);
             font-weight: 900;
             color: var(--navy-900);
             white-space: nowrap;
+            text-align: right;
         }
 
-        .range-slider-wrap { padding: 6px 2px 14px; }
+        .range-slider-wrap { padding: 8px 2px 16px; }
         .range-slider {
             -webkit-appearance: none;
             appearance: none;
@@ -1060,13 +1059,13 @@
             background: #cbd5e1;
             border-radius: 99px;
             outline: none;
-            margin: 4px 0 8px;
+            margin: 4px 0 10px;
         }
         .range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: var(--red-600);
             border: 3px solid #ffffff;
@@ -1076,51 +1075,61 @@
         .range-scale-labels {
             display: flex;
             justify-content: space-between;
-            font-size: 0.74rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #64748b;
         }
         .range-scale-labels span { white-space: nowrap; }
 
+        /* 결과 박스 확대 & 탕감금액(윗줄) / 월 납부금액(아랫줄) 수직 배치 */
         .dsw-result-box {
+            width: 100%;
             background: var(--navy-950);
             color: #ffffff;
-            border-radius: 12px;
-            padding: 18px 16px;
+            border-radius: 14px;
+            padding: 22px 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 16px;
+            box-shadow: 0 8px 20px rgba(9, 14, 26, 0.16);
+        }
+        .dsw-res-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            width: 100%;
+        }
+        .dsw-res-divider {
+            width: 100%;
+            height: 1px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.18);
         }
         .dsw-res-label {
             font-size: 0.82rem;
             color: #9ca3af;
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
         }
-        .dsw-res-value-row {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            flex-wrap: nowrap;
-            width: 100%;
-        }
         .dsw-res-saved {
-            font-size: 1.3rem;
+            font-size: clamp(1.22rem, 5.2vw, 1.44rem);
             font-weight: 900;
             color: var(--amber-400);
             white-space: nowrap;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+            display: block;
+            width: 100%;
         }
         .dsw-res-monthly {
-            font-size: 1.3rem;
+            font-size: clamp(1.22rem, 5.2vw, 1.44rem);
             font-weight: 900;
             color: var(--emerald-400);
             white-space: nowrap;
-        }
-        .dsw-res-slash {
-            font-size: 1.05rem;
-            color: #64748b;
-            font-weight: 700;
-            white-space: nowrap;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+            display: block;
+            width: 100%;
         }
 
         .field-group { margin-bottom: 14px; }
@@ -1464,7 +1473,6 @@
                     <span class="toggle-chip" id="photoMoreChip">사진 펼치기 ▼</span>
                 </button>
 
-                <!-- 사진 펼치기 내부: 빨간 박스 제거 & 한 줄 핵심 요약 + 원본 3종 -->
                 <div class="doc-photo-drawer" id="casePhotoDrawer">
                     <div class="doc-point-summary">
                         <div class="dps-title">📌 법원 서류 핵심 확인 포인트</div>
@@ -1507,7 +1515,6 @@
                 <span class="gold-shimmer">실제 탄식을 알고 계시나요?</span>
             </h2>
 
-            <!-- 실제 사례 경각심을 극대화한 메인 하이라이트 박스 -->
             <div class="commissioner-spotlight-card">
                 <span class="csc-alert-tag">⚠️ 실제 부산회생법원 회생위원들의 현장 탄식</span>
                 <div class="csc-main-quote">
@@ -1548,7 +1555,7 @@
         </section>
 
         <!-- =================================================================
-             4. 1~4단계 진행 차이 비교 (우측 중복 태그 삭제 & 심플화)
+             4. 1~4단계 진행 차이 비교
              ================================================================= -->
         <section class="interactive-process-section">
             <span class="sec-badge">✨ 단계별 진행 차이</span>
@@ -1604,7 +1611,7 @@
         </section>
 
         <!-- =================================================================
-             5. [신규 섹션] 의뢰인이 전해온 감사 편지 (공감 리뷰)
+             5. 의뢰인이 전해온 감사 편지 (공감 리뷰)
              ================================================================= -->
         <section class="client-review-letter-section">
             <div class="review-letter-card">
@@ -1634,7 +1641,7 @@
         </section>
 
         <!-- =================================================================
-             6. 오시는 길 & 전담 변호사 (약도 위 중복 배지 삭제 & 심플화)
+             6. 오시는 길 & 전담 변호사
              ================================================================= -->
         <section class="location-dedicated-section">
             <span class="sec-badge">📍 오시는 길 & 전담 변호사</span>
@@ -1657,7 +1664,7 @@
         </section>
 
         <!-- =================================================================
-             7. 채무액 슬라이더 & 무료 진단 신청 폼
+             7. 채무액 슬라이더 & 무료 진단 신청 폼 (박스 확대 & 상하 2단 분리)
              ================================================================= -->
         <section class="gentle-form-section" id="quickForm">
             <div class="gf-badge-wrap">
@@ -1693,11 +1700,15 @@
                             </div>
                         </div>
 
+                        <!-- 확대된 결과 박스: 윗줄(탕감금액) / 아랫줄(월 납부금액) 수직 배치 -->
                         <div class="dsw-result-box">
-                            <span class="dsw-res-label">최대 90% 감면 시 예상 결과</span>
-                            <div class="dsw-res-value-row">
+                            <div class="dsw-res-item">
+                                <span class="dsw-res-label">최대 90% 감면 시 예상 탕감금액</span>
                                 <strong class="dsw-res-saved" id="calcSavedText">약 9,000만 원 탕감</strong>
-                                <span class="dsw-res-slash">/</span>
+                            </div>
+                            <div class="dsw-res-divider"></div>
+                            <div class="dsw-res-item">
+                                <span class="dsw-res-label">탕감 후 예상 월 납부금액</span>
                                 <strong class="dsw-res-monthly" id="calcMonthlyText">월 17만 원대</strong>
                             </div>
                         </div>
@@ -1836,7 +1847,7 @@
             zoomBtn.innerText = isZoomed ? '축소하기 ↺' : '🔍 2배 확대';
         }
 
-        /* 3. 1~4단계 진행 과정 데이터 (중복 태그 제거 & 간결한 문구) */
+        /* 3. 1~4단계 진행 과정 데이터 */
         const processStepsData = [
             {
                 badBullets: [
