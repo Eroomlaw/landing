@@ -986,7 +986,6 @@
             box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
         }
 
-        /* 채무액 선택 위젯 박스 확대 */
         .debt-slider-widget {
             background: #f8fafc;
             border: 1.5px solid #cbd5e1;
@@ -1023,7 +1022,6 @@
             white-space: nowrap;
         }
 
-        /* 선택한 채무액 표시 박스 확대 및 넘침 방지 */
         .dsw-amount-showcase {
             width: 100%;
             background: #ffffff;
@@ -1081,7 +1079,6 @@
         }
         .range-scale-labels span { white-space: nowrap; }
 
-        /* 결과 박스 확대 & 탕감금액(윗줄) / 월 납부금액(아랫줄) 수직 배치 */
         .dsw-result-box {
             width: 100%;
             background: var(--navy-950);
@@ -1811,7 +1808,11 @@
             paraObserver.observe(para);
         });
 
-        /* 2. 실제 법원 결정문 사진 '더보기' 토글 */
+        /* 2. 실제 법원 결정문 사진 '더보기' 및 모달 뒤로가기(페이지 이탈 방지) 제어 */
+        let isDrawerHistoryPushed = false;
+        let isModalHistoryPushed = false;
+        let ignoreNextPopstate = false;
+
         function toggleCasePhotoDrawer() {
             const drawer = document.getElementById('casePhotoDrawer');
             const btn = document.getElementById('photoMoreBtn');
@@ -1819,9 +1820,18 @@
             const isOpen = drawer.classList.toggle('open');
             btn.classList.toggle('open', isOpen);
             chip.innerText = isOpen ? '사진 접기 ▲' : '사진 펼치기 ▼';
+
+            if (isOpen) {
+                history.pushState({ view: 'drawer' }, '', window.location.href);
+                isDrawerHistoryPushed = true;
+            } else if (isDrawerHistoryPushed) {
+                isDrawerHistoryPushed = false;
+                ignoreNextPopstate = true;
+                history.back();
+            }
         }
 
-        /* 결정문 원본 모달 열기/닫기/줌 */
+        /* 결정문 원본 모달 열기/닫기/줌 (휴대전화 뒤로가기 시 페이지 튕김 방지) */
         function openDocModal(imgSrc, titleText) {
             const modal = document.getElementById('docModalBackdrop');
             const img = document.getElementById('docModalImg');
@@ -1831,13 +1841,29 @@
             img.classList.remove('zoomed-in');
             title.innerText = titleText;
             zoomBtn.innerText = '🔍 2배 확대';
+
+            if (!modal.classList.contains('open')) {
+                history.pushState({ view: 'modal' }, '', window.location.href);
+                isModalHistoryPushed = true;
+            }
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeDocModal() {
-            document.getElementById('docModalBackdrop').classList.remove('open');
+        function closeDocModal(fromPopstate) {
+            const modal = document.getElementById('docModalBackdrop');
+            if (!modal.classList.contains('open')) return;
+
+            modal.classList.remove('open');
             document.body.style.overflow = '';
+
+            if (!fromPopstate && isModalHistoryPushed) {
+                isModalHistoryPushed = false;
+                ignoreNextPopstate = true;
+                history.back();
+            } else {
+                isModalHistoryPushed = false;
+            }
         }
 
         function toggleDocZoom() {
@@ -1846,6 +1872,30 @@
             const isZoomed = img.classList.toggle('zoomed-in');
             zoomBtn.innerText = isZoomed ? '축소하기 ↺' : '🔍 2배 확대';
         }
+
+        /* 휴대전화 물리/제스처 '뒤로가기' 버튼 감지 시 페이지 이탈 대신 사진창만 닫기 */
+        window.addEventListener('popstate', function() {
+            if (ignoreNextPopstate) {
+                ignoreNextPopstate = false;
+                return;
+            }
+
+            const modal = document.getElementById('docModalBackdrop');
+            if (modal && modal.classList.contains('open')) {
+                closeDocModal(true);
+                return;
+            }
+
+            const drawer = document.getElementById('casePhotoDrawer');
+            const btn = document.getElementById('photoMoreBtn');
+            const chip = document.getElementById('photoMoreChip');
+            if (drawer && drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                if (btn) btn.classList.remove('open');
+                if (chip) chip.innerText = '사진 펼치기 ▼';
+                isDrawerHistoryPushed = false;
+            }
+        });
 
         /* 3. 1~4단계 진행 과정 데이터 */
         const processStepsData = [
