@@ -946,11 +946,12 @@
         }
 
         /* =================================================================
-           7. 채무액 슬라이더 & 무료 진단 신청 폼 (박스 확대 & 상하 2단 분리)
+           7. 채무액 슬라이더 & 무료 진단 신청 폼 (파랑새 착지 액션 포함)
            ================================================================= */
         .gentle-form-section {
             background: var(--paper-bg);
             padding: 38px 14px 44px;
+            position: relative;
         }
         .gf-badge-wrap {
             text-align: center;
@@ -1188,7 +1189,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             color: var(--text-sub);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             cursor: pointer;
             white-space: nowrap;
         }
@@ -1197,6 +1198,15 @@
             height: 16px;
             accent-color: var(--navy-900);
             flex-shrink: 0;
+        }
+
+        /* =================================================================
+           파랑새 착지 애니메이션 & 신청 버튼 래퍼
+           ================================================================= */
+        .submit-bird-wrap {
+            position: relative;
+            width: 100%;
+            margin-top: 6px;
         }
 
         .submit-btn {
@@ -1211,7 +1221,120 @@
             cursor: pointer;
             box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
             white-space: nowrap;
+            position: relative;
+            z-index: 1;
+            transition: box-shadow 0.4s ease, transform 0.2s ease;
         }
+
+        .submit-btn.bird-landed-glow {
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.28), 0 6px 18px rgba(220, 38, 38, 0.22);
+        }
+
+        .bluebird-actor {
+            position: absolute;
+            top: -30px;
+            right: 12px;
+            width: 44px;
+            height: 44px;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transform: translate(120px, -130px) scale(0.55) rotate(-18deg);
+            transform-origin: bottom center;
+        }
+
+        .bluebird-actor.fly-in {
+            animation: bluebirdFlightPath 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .bluebird-actor.perched {
+            opacity: 1;
+            transform: translate(0, 0) scale(1) rotate(0deg);
+            animation: bluebirdPerchedIdle 3.4s ease-in-out infinite;
+        }
+
+        .bluebird-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            filter: drop-shadow(0 4px 6px rgba(15, 23, 42, 0.18));
+        }
+
+        .bluebird-wing {
+            transform-origin: 28px 26px;
+        }
+
+        .bluebird-actor.fly-in .bluebird-wing {
+            animation: wingFlapFast 0.2s ease-in-out infinite alternate;
+        }
+
+        .bluebird-actor.perched .bluebird-wing {
+            animation: wingFoldRest 3.4s ease-in-out infinite;
+        }
+
+        /* 착지 순간 반짝이는 희망 후광 */
+        .bird-landing-sparkle {
+            position: absolute;
+            top: -12px;
+            right: 22px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.85) 0%, rgba(59, 130, 246, 0) 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .bird-landing-sparkle.pop {
+            animation: sparklePop 1s ease-out forwards;
+        }
+
+        @keyframes bluebirdFlightPath {
+            0% {
+                opacity: 0;
+                transform: translate(135px, -145px) scale(0.5) rotate(-25deg);
+            }
+            18% {
+                opacity: 1;
+            }
+            48% {
+                transform: translate(-26px, -52px) scale(0.92) rotate(12deg);
+            }
+            76% {
+                transform: translate(8px, -14px) scale(1.04) rotate(-8deg);
+            }
+            90% {
+                transform: translate(-2px, 2px) scale(0.98) rotate(3deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes wingFlapFast {
+            0% { transform: rotate(-34deg) scaleY(1.08); }
+            100% { transform: rotate(26deg) scaleY(0.75); }
+        }
+
+        @keyframes wingFoldRest {
+            0%, 72%, 100% { transform: rotate(0deg); }
+            82% { transform: rotate(-14deg); }
+            90% { transform: rotate(4deg); }
+        }
+
+        @keyframes bluebirdPerchedIdle {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            45% { transform: translate(0, -2px) rotate(-3deg); }
+            75% { transform: translate(0, 0) rotate(2deg); }
+        }
+
+        @keyframes sparklePop {
+            0% { opacity: 0.95; transform: scale(0.3); }
+            100% { opacity: 0; transform: scale(2.8); }
+        }
+
         .zero-pressure-note {
             text-align: center;
             font-size: 0.76rem;
@@ -1220,6 +1343,22 @@
             font-weight: 600;
             white-space: nowrap;
         }
+
+        .bluebird-blessing-note {
+            text-align: center;
+            font-family: 'Gowun Dodum', 'Pretendard', serif;
+            font-size: 0.84rem;
+            color: #1d4ed8;
+            margin-top: 7px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
         .done-box {
             display: none;
             background: var(--emerald-50);
@@ -1385,7 +1524,7 @@
         </header>
 
         <!-- =================================================================
-             1. 상단 인트로: 감성 손편지 ('눈탱이' 반영 및 애니메이션 속도 50% 감속)
+             1. 상단 인트로: 감성 손편지 ('안타까운 이웃분들' 문구 수정 반영)
              ================================================================= -->
         <section class="letter-intro-section">
             <div class="letter-paper-card">
@@ -1410,7 +1549,7 @@
                         사무실이 법원 코앞이다 보니, 타 지역 사무실에 사건을 맡겼다가 <span class="focus-redline">'불인가'나 '기각' 판정</span>을 받고 망연자실한 표정으로 저희 문을 두드리시는 분들을 매일 만납니다.
                     </p>
                     <p class="letter-para">
-                        어렵게 수임료를 마련하셨을 텐데, 얼굴 한 번 본 적 없는 타 지역 담당자는 연락조차 닿지 않아 발만 구르다 <span class="focus-highlight">결국 모든 걸 잃을 위기에 처한 우리의 이웃분들</span>입니다.
+                        어렵게 수임료를 마련하셨을 텐데, 얼굴 한 번 본 적 없는 타 지역 담당자는 연락조차 닿지 않아 발만 구르다 <span class="focus-highlight">결국 모든것 잃을 위기에 처한 안타까운 이웃분들</span>입니다.
                     </p>
                     <p class="letter-para">
                         같은 부산 사람으로서 그 무너지는 한숨을 그냥 지나칠 수 없었습니다. <span class="focus-redline">화려한 광고에 속아 억울하게 피해 보는 분</span>이 더는 없기를 바라는 마음으로 이 글을 올립니다.
@@ -1503,7 +1642,7 @@
         </section>
 
         <!-- =================================================================
-             3. 부산회생법원 회생위원의 실제 탄식 & 법원 출석 안내 (모순 문구 수정)
+             3. 부산회생법원 회생위원의 실제 탄식 & 법원 출석 안내
              ================================================================= -->
         <section class="twist-dark-section">
             <span class="twist-pill">🚨 신청 전 반드시 아셔야 할 현실</span>
@@ -1552,7 +1691,7 @@
         </section>
 
         <!-- =================================================================
-             4. 1~4단계 진행 차이 비교 (STEP 4 동행 문구 제거 및 1:1 코칭 강화)
+             4. 1~4단계 진행 차이 비교
              ================================================================= -->
         <section class="interactive-process-section">
             <span class="sec-badge">✨ 단계별 진행 차이</span>
@@ -1608,7 +1747,7 @@
         </section>
 
         <!-- =================================================================
-             5. 의뢰인이 전해온 감사 편지 (공감 리뷰)
+             5. 의뢰인이 전해온 감사 편지 ('마지막 남은 동아줄 같은 존재였습니다' 수정 반영)
              ================================================================= -->
         <section class="client-review-letter-section">
             <div class="review-letter-card">
@@ -1622,7 +1761,7 @@
                         부산에서 작은 가게를 하며 쉴 틈 없이 달려왔지만, 남은 건 <span class="focus-redline">3억이 넘는 빚과 매일 조여오는 독촉 전화</span>뿐이었습니다.
                     </p>
                     <p class="letter-para">
-                        모든 걸 포기하고 싶던 그 캄캄한 절망의 끝에서 저를 잡아준 건 가족도 그 누구도 아닌 이룸법률사무소였습니다. <span class="focus-highlight">내 일처럼 제 눈물을 닦아주던 그 따뜻한 손길</span>이 제겐 마지막 살 구멍이었습니다.
+                        모든 걸 포기하고 싶던 그 캄캄한 절망의 끝에서 저를 잡아준 건 가족도 그 누구도 아닌 이룸법률사무소였습니다. <span class="focus-highlight">내 일처럼 제 눈물을 닦아주던 그 따뜻한 손길</span>은 제게 마지막 남은 동아줄 같은 존재였습니다.
                     </p>
                     <p class="letter-para">
                         개인회생 인가를 받고 성실히 변제해 온 지 벌써 3년이 넘어가네요. 요즘은 제 이름으로 된 카드도 만들어 쓰고, <span class="focus-highlight">진짜 평범한 일상을 숨 쉬며 살아가고 있습니다.</span>
@@ -1661,7 +1800,7 @@
         </section>
 
         <!-- =================================================================
-             7. 채무액 슬라이더 & 무료 진단 신청 폼 (36개월 변제 기준 현실화 반영)
+             7. 채무액 슬라이더 & 무료 진단 신청 폼 (미선택 기본값 & 파랑새 착지 적용)
              ================================================================= -->
         <section class="gentle-form-section" id="quickForm">
             <div class="gf-badge-wrap">
@@ -1675,7 +1814,8 @@
             <div class="form-box-card">
                 <form id="consultationForm" action="https://formspree.io/f/xdeerkvn" method="POST">
                     <input type="hidden" name="debt" id="selectedDebtInput" value="1억 원 내외">
-                    <input type="hidden" name="contact_preference" id="contactPrefHidden" value="문자·카톡으로 먼저 조용히 안내 희망">
+                    <!-- 기본 미선택 상태이므로 기본값은 '전화 상담 가능', 체크 시 '문자·카톡으로 먼저 조용히 안내 희망'으로 전환 -->
+                    <input type="hidden" name="contact_preference" id="contactPrefHidden" value="전화 상담 가능">
 
                     <div class="debt-slider-widget">
                         <div class="dsw-header-stack">
@@ -1722,9 +1862,10 @@
                         <input type="tel" name="phone" id="phoneInput" class="field-input" placeholder="010-0000-0000" maxlength="13" oninput="formatPhone(this)" required>
                     </div>
 
+                    <!-- 기본 미선택(unchecked) 상태 -->
                     <div class="comfort-option-box">
                         <label class="comfort-check-label">
-                            <input type="checkbox" id="contactPrefCheck" checked onchange="document.getElementById('contactPrefHidden').value = this.checked ? '문자·카톡으로 먼저 조용히 안내 희망' : '전화 상담 가능';">
+                            <input type="checkbox" id="contactPrefCheck" onchange="document.getElementById('contactPrefHidden').value = this.checked ? '문자·카톡으로 먼저 조용히 안내 희망' : '전화 상담 가능';">
                             <span>통화가 부담스러우면 '문자로 먼저 안내' 받기</span>
                         </label>
                     </div>
@@ -1734,9 +1875,51 @@
                         <span>[필수] 비밀 무료 진단을 위한 개인정보 수집 동의</span>
                     </label>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">내 예상 탕감액 무료 확인하기 →</button>
+                    <!-- 파랑새가 날아와 착지하는 신청 버튼 영역 -->
+                    <div class="submit-bird-wrap" id="submitBirdWrap">
+                        <div class="bird-landing-sparkle" id="birdSparkle"></div>
+                        <div class="bluebird-actor" id="bluebirdActor" aria-hidden="true">
+                            <svg class="bluebird-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 꼬리 깃털 -->
+                                <path d="M14 38 L4 32 L7 43 L16 42 Z" fill="#1D4ED8"/>
+                                <!-- 다리 (착지 시 버튼 위에 닿는 부분) -->
+                                <path d="M29 48 L27 56 M27 56 L24 56 M27 56 L30 56" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M35 48 L34 56 M34 56 L31 56 M34 56 L37 56" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+                                <!-- 몸통 -->
+                                <path d="M14 37 C14 25, 25 20, 36 22 C44 23, 49 28, 48 36 C47 45, 37 50, 26 49 C19 48, 14 43, 14 37 Z" fill="url(#bluebirdBodyGrad)"/>
+                                <!-- 가슴 포근한 밝은 털 -->
+                                <path d="M24 39 C26 46, 36 48, 44 41 C46 38, 47 35, 46 33 C41 37, 31 39, 24 39 Z" fill="#DBEAFE"/>
+                                <!-- 날개 (애니메이션 그룹) -->
+                                <g class="bluebird-wing">
+                                    <path d="M22 27 C17 14, 29 9, 38 18 C41 21, 39 31, 31 34 C25 36, 21 32, 22 27 Z" fill="url(#bluebirdWingGrad)"/>
+                                    <path d="M24 25 C22 18, 29 14, 35 20" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round"/>
+                                </g>
+                                <!-- 부리 -->
+                                <path d="M47 27 L56 29 L47 33 Z" fill="#F59E0B"/>
+                                <!-- 눈 & 볼터치 -->
+                                <circle cx="42" cy="27" r="2.2" fill="#0F172A"/>
+                                <circle cx="42.7" cy="26.3" r="0.8" fill="#FFFFFF"/>
+                                <circle cx="40" cy="31" r="2.2" fill="#F43F5E" opacity="0.45"/>
+                                <defs>
+                                    <linearGradient id="bluebirdBodyGrad" x1="14" y1="20" x2="48" y2="50" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#2563EB"/>
+                                        <stop offset="100%" stop-color="#60A5FA"/>
+                                    </linearGradient>
+                                    <linearGradient id="bluebirdWingGrad" x1="20" y1="12" x2="38" y2="35" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#1E40AF"/>
+                                        <stop offset="100%" stop-color="#3B82F6"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">내 예상 탕감액 무료 확인하기 →</button>
+                    </div>
+
                     <div class="zero-pressure-note">
                         ※ 단순 문의만 하셔도 무리한 권유 전화를 드리지 않습니다.
+                    </div>
+                    <div class="bluebird-blessing-note">
+                        <span>🐦</span> 행복의 파랑새가 의뢰인과 함께 하시길
                     </div>
                 </form>
 
@@ -1898,7 +2081,7 @@
             }
         });
 
-        /* 3. 1~4단계 진행 과정 데이터 (STEP 4 동행 표현 제거 및 1:1 코칭·답변 정리로 수정) */
+        /* 3. 1~4단계 진행 과정 데이터 */
         const processStepsData = [
             {
                 badBullets: [
@@ -1990,6 +2173,41 @@
             document.getElementById('calcMonthlyText').innerText = `월 ${monthlyMan}만 원대`;
         }
 
+        /* 5. 하단 신청 버튼 도달 시 희망의 파랑새 비행 & 착지 액션 */
+        const submitBirdWrap = document.getElementById('submitBirdWrap');
+        const bluebirdActor = document.getElementById('bluebirdActor');
+        const birdSparkle = document.getElementById('birdSparkle');
+        const submitBtn = document.getElementById('submitBtn');
+        let birdHasFlown = false;
+
+        if (submitBirdWrap && bluebirdActor) {
+            const birdObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !birdHasFlown) {
+                        birdHasFlown = true;
+                        bluebirdActor.classList.add('fly-in');
+
+                        /* 착지 시점(2.2초)에 반짝임 효과 및 버튼 포커스 후광 */
+                        setTimeout(() => {
+                            if (birdSparkle) birdSparkle.classList.add('pop');
+                            if (submitBtn) submitBtn.classList.add('bird-landed-glow');
+                        }, 2150);
+
+                        /* 비행 완료 후(2.5초) 사뿐히 앉아서 숨 고르는 모션으로 전환 */
+                        setTimeout(() => {
+                            bluebirdActor.classList.remove('fly-in');
+                            bluebirdActor.classList.add('perched');
+                        }, 2500);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.35
+            });
+
+            birdObserver.observe(submitBirdWrap);
+        }
+
         function formatPhone(input) {
             let nums = input.value.replace(/[^0-9]/g, '');
             if (nums.length <= 3) {
@@ -2006,7 +2224,6 @@
         }
 
         const form = document.getElementById('consultationForm');
-        const submitBtn = document.getElementById('submitBtn');
         const successBox = document.getElementById('successBox');
         const phoneInput = document.getElementById('phoneInput');
 
