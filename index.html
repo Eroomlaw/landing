@@ -6,6 +6,8 @@
     <title>이룸법률사무소 | 부산회생법원 정문 앞 개인회생·파산 전담센터</title>
     <meta property="og:title" content="부산 사람이면 제발! 다른 지역 사무실에 맡겨서 눈탱이 맞지 마세요">
     <meta property="og:description" content="부산회생법원 정문 바로 앞 이룸법률사무소에서 드리는 진심의 손편지. 장혜승 대표변호사가 끝까지 함께합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://eroomlaw.github.io/landing/map_info.png">
 
     <!-- [메타 픽셀 코드] -->
     <script>
@@ -1813,6 +1815,7 @@
 
             <div class="form-box-card">
                 <form id="consultationForm" action="https://formspree.io/f/xdeerkvn" method="POST">
+                    <input type="hidden" name="ad_source" id="adSourceInput" value="direct">
                     <input type="hidden" name="debt" id="selectedDebtInput" value="1억 원 내외">
                     <!-- 기본 미선택 상태이므로 기본값은 '전화 상담 가능', 체크 시 '문자·카톡으로 먼저 조용히 안내 희망'으로 전환 -->
                     <input type="hidden" name="contact_preference" id="contactPrefHidden" value="전화 상담 가능">
@@ -2259,6 +2262,21 @@
                 });
             });
         }
+
+        /* 6. 광고 소재(utm_content / utm_source) 자동 추적하여 Formspree로 전송 */
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmContent = urlParams.get('utm_content');
+            const utmSource = urlParams.get('utm_source');
+            const adSourceEl = document.getElementById('adSourceInput');
+            if (adSourceEl) {
+                if (utmContent) {
+                    adSourceEl.value = utmSource ? `${utmSource} / ${utmContent}` : utmContent;
+                } else if (utmSource) {
+                    adSourceEl.value = utmSource;
+                }
+            }
+        })();
     </script>
 </body>
 </html>
